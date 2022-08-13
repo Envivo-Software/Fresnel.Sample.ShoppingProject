@@ -1,12 +1,13 @@
-﻿using Envivo.Fresnel.ModelTypes.Interfaces;
+﻿using Envivo.Fresnel.ModelTypes;
+using Envivo.Fresnel.ModelTypes.Interfaces;
 
 namespace Acme.OnlineShopping.Stock.Dependencies
 {
     public class CategoryRepository : IRepository<Category>
     {
-        private static readonly List<Category> _Categories = BuildCategorysForDemo();
+        private static readonly InMemoryRepository<Category> _InMemoryRepository = new InMemoryRepository<Category>(BuildCategoriesForDemo());
 
-        private static List<Category> BuildCategorysForDemo()
+        private static List<Category> BuildCategoriesForDemo()
         {
             var results = new List<Category> {
                 new Category{ Name = "Synthesizer" },
@@ -31,7 +32,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <returns></returns>
         public IQueryable<Category> GetAll()
         {
-            return _Categories.AsQueryable();
+            return _InMemoryRepository.GetAll();
         }
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <returns></returns>
         public Category? Load(Guid id)
         {
-            return _Categories.FirstOrDefault(p => p.Id == id);
+            return _InMemoryRepository.Load(id);
         }
 
         /// <summary>
@@ -49,32 +50,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <returns></returns>
         public int Save(Category category, IEnumerable<object> newObjects, IEnumerable<object> modifiedObjects, IEnumerable<object> deletedObjects)
         {
-            var newCategories = newObjects.OfType<Category>();
-            foreach (var cat in newCategories)
-            {
-                Save(cat);
-            }
-
-            var modifiedCategories = modifiedObjects.OfType<Category>();
-            foreach (var cat in modifiedCategories)
-            {
-                Save(cat);
-            }
-
-            return newCategories.Count() + modifiedCategories.Count();
-        }
-
-        private void Save(Category category)
-        {
-            Delete(category);
-
-            var copy = new Category
-            {
-                Id = category.Id,
-                Name = category.Name,
-                Description = category.Description,
-            };
-            _Categories.Add(copy);
+            return _InMemoryRepository.Save(category, newObjects, modifiedObjects, deletedObjects);
         }
 
         /// <summary>
@@ -83,11 +59,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <returns></returns>
         public void Delete(Category category)
         {
-            var match = _Categories.FirstOrDefault(p => p.Id == category.Id);
-            if (match != null)
-            {
-                _Categories.Remove(match);
-            }
+            _InMemoryRepository.Delete(category);
         }
 
         /// <summary>
@@ -96,8 +68,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <returns></returns>
         public IAggregateLock? Lock(Category category)
         {
-            // Not applicable
-            return null;
+            return _InMemoryRepository.Lock(category);
         }
 
         /// <summary>
@@ -106,7 +77,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <returns></returns>
         public void Unlock(Category category)
         {
-            // Not applicable
+            _InMemoryRepository.Unlock(category);
         }
     }
 }

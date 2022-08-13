@@ -1,10 +1,11 @@
-﻿using Envivo.Fresnel.ModelTypes.Interfaces;
+﻿using Envivo.Fresnel.ModelTypes;
+using Envivo.Fresnel.ModelTypes.Interfaces;
 
 namespace Acme.OnlineShopping.Stock.Dependencies
 {
     public class ProductRepository : IRepository<Product>
     {
-        private static readonly List<Product> _Products = BuildProductsForDemo();
+        private static readonly InMemoryRepository<Product> _InMemoryRepository = new InMemoryRepository<Product>(BuildProductsForDemo());
 
         private static List<Product> BuildProductsForDemo()
         {
@@ -60,7 +61,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <returns></returns>
         public IQueryable<Product> GetAll()
         {
-            return _Products.AsQueryable();
+            return _InMemoryRepository.GetAll();
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <returns></returns>
         public Product? Load(Guid id)
         {
-            return _Products.FirstOrDefault(p => p.Id == id);
+            return _InMemoryRepository.Load(id);
         }
 
         /// <summary>
@@ -78,35 +79,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <returns></returns>
         public int Save(Product product, IEnumerable<object> newObjects, IEnumerable<object> modifiedObjects, IEnumerable<object> deletedObjects)
         {
-            var newProducts = newObjects.OfType<Product>();
-            foreach (var prod in newProducts)
-            {
-                Save(prod);
-            }
-
-            var modifiedProducts = modifiedObjects.OfType<Product>();
-            foreach (var prod in modifiedProducts)
-            {
-                Save(prod);
-            }
-
-            return newProducts.Count() + modifiedProducts.Count();
-        }
-
-        private void Save(Product product)
-        {
-            Delete(product);
-
-            var copy = new Product
-            {
-                Id = product.Id,
-                Name = product.Name,
-                Description = product.Description,
-                Categories = product.Categories.ToList(),
-                Stock = product.Stock.ToList(),
-                Supplier = product.Supplier,
-            };
-            _Products.Add(copy);
+            return _InMemoryRepository.Save(product, newObjects, modifiedObjects, deletedObjects);
         }
 
         /// <summary>
@@ -115,11 +88,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <returns></returns>
         public void Delete(Product product)
         {
-            var match = _Products.FirstOrDefault(p => p.Id == product.Id);
-            if (match != null)
-            {
-                _Products.Remove(match);
-            }
+            _InMemoryRepository.Delete(product);
         }
 
         /// <summary>
@@ -128,8 +97,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <returns></returns>
         public IAggregateLock? Lock(Product product)
         {
-            // Not applicable
-            return null;
+            return _InMemoryRepository.Lock(product);
         }
 
         /// <summary>
@@ -138,7 +106,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <returns></returns>
         public void Unlock(Product product)
         {
-            // Not applicable
+            _InMemoryRepository.Unlock(product);
         }
     }
 }
