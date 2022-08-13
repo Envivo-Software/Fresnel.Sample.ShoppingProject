@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <AssemblyVersion>1.2206.20.0</AssemblyVersion>
+    <FileVersion>1.2206.20.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Envivo.Fresnel.ModelAttributes" Version="1.0.1" />
+    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>
