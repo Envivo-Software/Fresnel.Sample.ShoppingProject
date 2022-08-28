@@ -1,10 +1,10 @@
 # Fresnel.Sample.ShoppingProject
 
-[Fresnel logo]
+A simple model of an Online Shopping System.
+Designed to show how a domain model would used with the [**Fresnel Domain Model Explorer**](https://github.com/Envivo-Software/Envivo.Fresnel).
 
-A simple domain model for an Online Shopping System.
-Designed to show various capabilities of [**Fresnel Domain Model Explorer**](https://github.com/Envivo-Software/Envivo.Fresnel).
+A great starting point for your new DDD prototypes.
 
-To learn more visit https://www.envivo.co.uk
+![](https://www.envivo.co.uk/images/Fresnel_logo_docs_logo.png)
 
 *Copyright 2022 Envivo Software*
