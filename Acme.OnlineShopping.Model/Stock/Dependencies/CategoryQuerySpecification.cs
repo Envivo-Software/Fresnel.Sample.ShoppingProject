@@ -1,4 +1,6 @@
-﻿using Envivo.Fresnel.ModelTypes.Interfaces;
+﻿// SPDX-FileCopyrightText: Copyright (c) 2022 Envivo Software
+// SPDX-License-Identifier: Apache-2.0
+using Envivo.Fresnel.ModelTypes.Interfaces;
 
 namespace Acme.OnlineShopping.Stock.Dependencies
 {

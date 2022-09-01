@@ -1,4 +1,6 @@
-﻿using Acme.OnlineShopping.Contacts.Dependencies;
+﻿// SPDX-FileCopyrightText: Copyright (c) 2022 Envivo Software
+// SPDX-License-Identifier: Apache-2.0
+using Acme.OnlineShopping.Contacts.Dependencies;
 using System.ComponentModel.DataAnnotations;
 
 namespace Acme.OnlineShopping.Contacts

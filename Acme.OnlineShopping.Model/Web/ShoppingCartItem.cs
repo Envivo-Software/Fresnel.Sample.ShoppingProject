@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: Copyright (c) 2022 Envivo Software
+// SPDX-License-Identifier: Apache-2.0
 using Acme.OnlineShopping.Stock;
 using Acme.OnlineShopping.Stock.Dependencies;
 using Envivo.Fresnel.ModelAttributes;

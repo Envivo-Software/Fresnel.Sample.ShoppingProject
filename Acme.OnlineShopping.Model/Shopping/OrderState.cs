@@ -1,4 +1,6 @@
-﻿namespace Acme.OnlineShopping.Shopping
+﻿// SPDX-FileCopyrightText: Copyright (c) 2022 Envivo Software
+// SPDX-License-Identifier: Apache-2.0
+namespace Acme.OnlineShopping.Shopping
 {
     /// <summary>
     /// The state of an Order

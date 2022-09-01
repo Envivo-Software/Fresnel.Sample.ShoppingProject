@@ -1,0 +1,17 @@
+﻿extensions: designer.cs generated.cs
+extensions: .cs .cpp .h
+// SPDX-FileCopyrightText: Copyright (c) 2022 Envivo Software
+// SPDX-License-Identifier: Apache-2.0
+extensions: .aspx .ascx
+<%-- 
+SPDX-FileCopyrightText: Copyright (c) 2022 Envivo Software
+SPDX-License-Identifier: Apache-2.0
+--%>
+extensions: .vb
+'SPDX-FileCopyrightText: Copyright (c) 2022 Envivo Software
+'SPDX-License-Identifier: Apache-2.0
+extensions:  .xml .config .xsd
+<!--
+SPDX-FileCopyrightText: Copyright (c) 2022 Envivo Software
+SPDX-License-Identifier: Apache-2.0
+-->

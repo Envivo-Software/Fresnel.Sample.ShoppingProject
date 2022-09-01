@@ -1,4 +1,6 @@
-﻿namespace Acme.OnlineShopping.Web
+﻿// SPDX-FileCopyrightText: Copyright (c) 2022 Envivo Software
+// SPDX-License-Identifier: Apache-2.0
+namespace Acme.OnlineShopping.Web
 {
     /// <summary>
     /// Defines the various states an online user can be in 
