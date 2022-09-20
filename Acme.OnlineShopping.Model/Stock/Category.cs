@@ -11,6 +11,9 @@ namespace Acme.OnlineShopping.Stock
     /// </summary>
     public class Category : IAggregateRoot
     {
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public Category()
         {
             this.Products = new List<Product>();

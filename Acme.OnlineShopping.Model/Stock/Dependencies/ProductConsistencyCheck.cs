@@ -11,6 +11,11 @@ namespace Acme.OnlineShopping.Stock.Dependencies
     /// </summary>
     public class ProductConsistencyCheck : IConsistencyCheck<Product>
     {
+        /// <summary>
+        /// Checks that Products are consistent, before being saved
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         public Assertion Check(Product product)
         {
             var allExceptions = new List<Exception>();

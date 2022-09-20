@@ -6,6 +6,9 @@ using Envivo.Fresnel.ModelTypes.Interfaces;
 
 namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
 {
+    /// <summary>
+    /// Used for creating new Customer instances
+    /// </summary>
     public class CustomerFactory : IFactory<Customer>
     {
         /// <summary>

@@ -7,6 +7,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Acme.OnlineShopping.Web
 {
+    /// <summary>
+    /// Provides a Customer access to the online Shopping Cart
+    /// </summary>
     public class WebUser: IAggregateRoot
     {
         /// <summary>

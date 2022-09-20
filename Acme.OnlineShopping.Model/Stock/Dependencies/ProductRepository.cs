@@ -5,6 +5,9 @@ using Envivo.Fresnel.ModelTypes.Interfaces;
 
 namespace Acme.OnlineShopping.Stock.Dependencies
 {
+    /// <summary>
+    /// Repository for managing Products in a data store
+    /// </summary>
     public class ProductRepository : IRepository<Product>
     {
         private static readonly InMemoryRepository<Product> _InMemoryRepository = new InMemoryRepository<Product>(BuildProductsForDemo());

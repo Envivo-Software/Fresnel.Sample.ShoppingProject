@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Acme.OnlineShopping.Contacts
 {
+    /// <summary>
+    /// The name details for a person
+    /// </summary>
     public class NameInfo
     {
         private string _FirstName;

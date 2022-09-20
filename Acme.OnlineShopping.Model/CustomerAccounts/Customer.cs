@@ -35,12 +35,15 @@ namespace Acme.OnlineShopping.CustomerAccounts
         public AddressInfo Address { get; set; }
 
         /// <summary>
-        /// The customers contact phone number
+        /// The customer's contact phone number
         /// </summary>
         [UI(renderOption: UiRenderOption.InlineSimple)]
         [Relationship(RelationshipType.Owns)]
         public PhoneInfo Phone { get; set; }
 
+        /// <summary>
+        /// The customer's email address
+        /// </summary>
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 

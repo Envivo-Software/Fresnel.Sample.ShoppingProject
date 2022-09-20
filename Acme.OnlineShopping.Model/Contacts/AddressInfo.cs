@@ -5,23 +5,50 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Acme.OnlineShopping.Contacts
 {
+    /// <summary>
+    /// The details of an address
+    /// </summary>
     public class AddressInfo
     {
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         [Key]
         public Guid Id { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string HouseName { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string HouseNumber { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Street { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Town { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string County { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public string Country { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [DataType(DataType.PostalCode)]
         public string PostalCode { get; set; }
 
@@ -34,13 +61,13 @@ namespace Acme.OnlineShopping.Contacts
             var line1Parts =
                 new string[] { HouseName, HouseNumber, Street }
                 .Where(p => !string.IsNullOrEmpty(p))
-                .ToArray();
+                .ToList();
             var line1 = string.Join(" ", line1Parts);
 
             var line2Parts =
                 new string[] { Town, County, Country, PostalCode }
                 .Where(p => !string.IsNullOrEmpty(p))
-                .ToArray();
+                .ToList();
             var line2 = string.Join(",", line2Parts);
 
             return $"{line1}, {line2}";
