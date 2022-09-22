@@ -106,7 +106,10 @@ namespace Acme.OnlineShopping.Web
         /// <returns></returns>
         public Order ConfirmAndPlaceOrder(OrderBuilder orderBuilder, DateTime? placementDate)
         {
-            var newOrder = orderBuilder.CreateOrder(this);
+            if (this.WebUser?.Customer == null)
+                return null;
+
+            var newOrder = orderBuilder.CreateOrder(this.WebUser.Customer.Account, this);
             if (placementDate != null)
             {
                 newOrder.PlacementDate = placementDate.Value;

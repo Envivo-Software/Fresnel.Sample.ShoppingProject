@@ -13,7 +13,16 @@ namespace Acme.OnlineShopping.Shopping
     /// </summary>
     public class Order : IAggregateRoot
     {
-        private Payment _Payment;
+        private Payment? _Payment;
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public Order(Account account)
+        {
+            this.Account = account;
+            this.OrderItems = new List<OrderItem>();
+        }
 
         /// <summary>
         /// <inheritdoc/>
@@ -51,18 +60,21 @@ namespace Acme.OnlineShopping.Shopping
         /// Optional: the address to ship to (if different to billing address)
         /// </summary>
         [Relationship(RelationshipType.Owns)]
-        public AddressInfo ShipTo { get; set; }
+        public AddressInfo? ShipTo { get; set; }
 
         /// <summary>
         /// The payment for this order
         /// </summary>
         [Relationship(RelationshipType.Owns)]
-        public Payment Payment
+        public Payment? Payment
         {
             get => _Payment; set
             {
                 _Payment = value;
-                _Payment.Order = this;
+                if (_Payment != null)
+                {
+                    _Payment.Order = this;
+                }
             }
         }
 

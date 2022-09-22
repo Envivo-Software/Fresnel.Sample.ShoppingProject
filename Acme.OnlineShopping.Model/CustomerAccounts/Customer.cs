@@ -17,6 +17,18 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        public Customer()
+        {
+            this.Name = new NameInfo();
+            this.Address = new AddressInfo();
+            this.Phone = new PhoneInfo();
+            this.Account = new Account();
+            this.WebUser = new WebUser();
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         [Key]
         public Guid Id { get; set; }
 
@@ -45,21 +57,21 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// The customer's email address
         /// </summary>
         [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         /// <summary>
         /// The customer's account, where billing and payment occurs
         /// </summary>
         [UI(renderOption: UiRenderOption.SeparateTabExpanded)]
         [Relationship(RelationshipType.Owns)]
-        public Account Account { get; set; }
+        public Account Account { get; internal set; }
 
         /// <summary>
         /// The user's entry into the online shopping site
         /// </summary>
         [UI(renderOption: UiRenderOption.SeparateTabExpanded)]
         [Relationship(RelationshipType.Owns)]
-        public WebUser WebUser { get; set; }
+        public WebUser WebUser { get; internal set; }
 
         /// <summary>
         /// Ensures the given Order is associated with this Customer's Account

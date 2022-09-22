@@ -10,8 +10,8 @@ namespace Acme.OnlineShopping.Contacts
     /// </summary>
     public class NameInfo
     {
-        private string _FirstName;
-        private string _LastName;
+        private string? _FirstName;
+        private string? _LastName;
 
         /// <summary>
         /// <inheritdoc/>
@@ -27,7 +27,7 @@ namespace Acme.OnlineShopping.Contacts
         /// <summary>
         /// The person's first name
         /// </summary>
-        public string FirstName
+        public string? FirstName
         {
             get => _FirstName;
             set
@@ -50,7 +50,7 @@ namespace Acme.OnlineShopping.Contacts
         /// <summary>
         /// The person's last name
         /// </summary>
-        public string LastName
+        public string? LastName
         {
             get => _LastName;
             set
