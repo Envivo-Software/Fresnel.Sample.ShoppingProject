@@ -11,7 +11,7 @@ namespace Acme.OnlineShopping.Shopping
         /// The order is new, and has not been processed yet
         /// </summary>
         New,
-        
+
         /// <summary>
         /// The order is temporarily on hold
         /// </summary>
