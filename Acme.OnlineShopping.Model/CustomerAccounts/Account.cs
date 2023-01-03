@@ -11,7 +11,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
     /// <summary>
     /// An account associated with a Customer
     /// </summary>
-    public class Account: IAggregateRoot
+    public class Account : IAggregateRoot
     {
         /// <summary>
         /// <inheritdoc/>
@@ -57,6 +57,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         [Visible(false)]
         public void AddToOrders(Order order)
         {
+            Orders.Add(order);
             order.Account = this;
         }
 
