@@ -81,9 +81,11 @@ namespace Acme.OnlineShopping.Web
         /// <returns></returns>
         public ShoppingCartItem AddItemToCart
         (
+            [Required]
             [FilterQuerySpecification(typeof(ProductQuerySpecification))]
             Product product,
 
+            [Required]
             [Range(0,99)]
             int quantity = 1
         )
