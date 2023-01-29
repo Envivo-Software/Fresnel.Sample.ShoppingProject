@@ -1,4 +1,4 @@
-﻿// SPDX-FileCopyrightText: Copyright (c) 2022 Envivo Software
+﻿// SPDX-FileCopyrightText: Copyright (c) 2022-2023 Envivo Software
 // SPDX-License-Identifier: Apache-2.0
 using Envivo.Fresnel.ModelTypes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
@@ -10,25 +10,14 @@ namespace Acme.OnlineShopping.Stock.Dependencies
     /// </summary>
     public class CategoryRepository : IRepository<Category>
     {
-        private static readonly InMemoryRepository<Category> _InMemoryRepository = new InMemoryRepository<Category>(BuildCategoriesForDemo());
+        private static InMemoryRepository<Category> _InMemoryRepository = new();
 
-        private static List<Category> BuildCategoriesForDemo()
+        public CategoryRepository(DemoCategoriesBuilder demoCategoriesBuilder)
         {
-            var results = new List<Category> {
-                new Category{ Name = "Synthesizer" },
-                new Category{ Name = "Midi Controller" },
-                new Category{ Name = "Audio Interface" },
-                new Category{ Name = "Speaker" },
-                new Category{ Name = "Headphones" },
-                new Category{ Name = "Mixer" },
-            };
-
-            foreach (var category in results)
+            if (!_InMemoryRepository.GetAll().Any())
             {
-                category.Id = Guid.NewGuid();
+                _InMemoryRepository = new(demoCategoriesBuilder.Build());
             }
-
-            return results;
         }
 
         /// <summary>
