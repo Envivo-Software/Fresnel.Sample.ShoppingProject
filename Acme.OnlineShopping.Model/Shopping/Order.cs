@@ -5,6 +5,7 @@ using Acme.OnlineShopping.CustomerAccounts;
 using Envivo.Fresnel.ModelAttributes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Acme.OnlineShopping.Shopping
 {
@@ -34,6 +35,7 @@ namespace Acme.OnlineShopping.Shopping
         /// The account this order belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
+        [JsonInclude]
         public Account Account { get; internal set; }
 
         /// <summary>
@@ -49,11 +51,13 @@ namespace Acme.OnlineShopping.Shopping
         /// <summary>
         /// The date the order was placed
         /// </summary>
+        [JsonInclude] 
         public DateTime PlacementDate { get; internal set; }
 
         /// <summary>
         /// The data the order was shipped
         /// </summary>
+        [JsonInclude] 
         public DateTime? ShippedDate { get; internal set; }
 
         /// <summary>
@@ -84,6 +88,7 @@ namespace Acme.OnlineShopping.Shopping
         /// <remarks>These items are automatically created from the Shopping Cart, and cannot be updated manually</remarks>
         [Relationship(RelationshipType.Owns)]
         [UI(renderOption: UiRenderOption.InlineExpanded)]
+        [JsonInclude]
         public ICollection<OrderItem> OrderItems { get; internal set; }
     }
 }

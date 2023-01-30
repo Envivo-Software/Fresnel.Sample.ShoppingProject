@@ -4,6 +4,7 @@ using Acme.OnlineShopping.CustomerAccounts;
 using Envivo.Fresnel.ModelAttributes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Acme.OnlineShopping.Web
 {
@@ -22,6 +23,7 @@ namespace Acme.OnlineShopping.Web
         /// The Customer what this web user belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
+        [JsonInclude]
         public Customer? Customer { get; internal set; }
 
         /// <summary>

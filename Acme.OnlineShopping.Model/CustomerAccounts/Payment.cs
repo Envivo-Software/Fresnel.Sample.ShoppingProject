@@ -4,6 +4,7 @@ using Acme.OnlineShopping.Shopping;
 using Envivo.Fresnel.ModelAttributes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Acme.OnlineShopping.CustomerAccounts
 {
@@ -38,6 +39,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// The Order that this payment is for
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
+        [JsonInclude]
         public Order Order { get; internal set; }
 
         /// <summary>

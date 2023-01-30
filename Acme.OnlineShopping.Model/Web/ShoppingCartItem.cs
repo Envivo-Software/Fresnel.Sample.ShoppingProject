@@ -5,6 +5,7 @@ using Acme.OnlineShopping.Stock.Dependencies;
 using Envivo.Fresnel.ModelAttributes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Acme.OnlineShopping.Web
 {
@@ -23,6 +24,7 @@ namespace Acme.OnlineShopping.Web
         /// The Shopping Cart this item belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
+        [JsonInclude]
         public ShoppingCart? ShoppingCart { get; internal set; }
 
         /// <summary>

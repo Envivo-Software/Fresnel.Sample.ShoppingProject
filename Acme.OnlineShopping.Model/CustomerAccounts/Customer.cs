@@ -6,6 +6,7 @@ using Acme.OnlineShopping.Web;
 using Envivo.Fresnel.ModelAttributes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Acme.OnlineShopping.CustomerAccounts
 {
@@ -64,6 +65,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// </summary>
         [UI(renderOption: UiRenderOption.SeparateTabExpanded)]
         [Relationship(RelationshipType.Owns)]
+        [JsonInclude]
         public Account Account { get; internal set; }
 
         /// <summary>
@@ -71,6 +73,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// </summary>
         [UI(renderOption: UiRenderOption.SeparateTabExpanded)]
         [Relationship(RelationshipType.Owns)]
+        [JsonInclude]
         public WebUser WebUser { get; internal set; }
 
         /// <summary>
