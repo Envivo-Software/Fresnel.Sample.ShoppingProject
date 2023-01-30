@@ -1,0 +1,16 @@
+2023-01-31:
+🐞 Fixes:
+- Corrected Account.AddToOrders()
+- Added [JsonInclude] to properties with internal setters, so that object graphs are preserved
+
+🎨 Improvements:
+- Added CustomerRepository, so Customer aggregates can be saved in memory
+- Added Demo data builders, so that Categories can be assigned to Products
+- ShoppingCart.AddItemToCart() now has [REQUIRED] parameters
+
+💨 Other:
+- Updated copyright notices
+- Code cleanup
+
+
+2022-09-01: PREVIEW RELEASE
