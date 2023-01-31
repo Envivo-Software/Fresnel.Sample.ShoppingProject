@@ -19,10 +19,21 @@ namespace Acme.OnlineShopping.Shopping
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        /// <remarks>Allow the JSON serialiser to create this object, but prevent the UI from allowing manually created instances</remarks>
+        [Visible(isVisible: false)] 
+        public Order()
+        {
+            this.Account = new Account();
+            this.OrderItems = new List<OrderItem>();
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public Order(Account account)
+            : this()
         {
             this.Account = account;
-            this.OrderItems = new List<OrderItem>();
         }
 
         /// <summary>
@@ -51,13 +62,13 @@ namespace Acme.OnlineShopping.Shopping
         /// <summary>
         /// The date the order was placed
         /// </summary>
-        [JsonInclude] 
+        [JsonInclude]
         public DateTime PlacementDate { get; internal set; }
 
         /// <summary>
         /// The data the order was shipped
         /// </summary>
-        [JsonInclude] 
+        [JsonInclude]
         public DateTime? ShippedDate { get; internal set; }
 
         /// <summary>
