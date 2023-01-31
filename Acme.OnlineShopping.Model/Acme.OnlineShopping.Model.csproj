@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Envivo.Fresnel.ModelAttributes" Version="1.1.0" />
-    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="1.2.0" />
+    <PackageReference Include="Envivo.Fresnel.ModelAttributes" Version="1.1.1" />
+    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="1.2.1" />
   </ItemGroup>
 
 </Project>
