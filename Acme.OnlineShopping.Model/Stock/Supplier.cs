@@ -20,11 +20,13 @@ namespace Acme.OnlineShopping.Stock
         /// <summary>
         /// The Supplier's address
         /// </summary>
+        [Relationship(RelationshipType.Owns)]
         public AddressInfo Address { get; set; }
 
         /// <summary>
         /// The Supplier's Phone contact info
         /// </summary>
+        [Relationship(RelationshipType.Owns)]
         public PhoneInfo Phone { get; set; }
 
         /// <summary>
