@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Envivo.Fresnel" Version="0.9.0-preview" />
+	  <PackageReference Include="Envivo.Fresnel" Version="0.10.0-preview" />
 	</ItemGroup>
 
 	<ItemGroup>
