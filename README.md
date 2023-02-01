@@ -15,4 +15,4 @@ A great starting point for your new DDD prototypes.
  
 ![](https://www.envivo.co.uk/images/Fresnel_logo_docs_logo.png)
 
-*Copyright 2022 Envivo Software*
+*Copyright 2022-2023 Envivo Software*
