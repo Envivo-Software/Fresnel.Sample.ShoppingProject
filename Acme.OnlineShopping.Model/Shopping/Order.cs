@@ -53,7 +53,8 @@ namespace Acme.OnlineShopping.Shopping
         /// <summary>
         /// The reference number for this order
         /// </summary>
-        public int OrderNo { get; set; }
+        [JsonInclude]
+        public int OrderNo { get; internal set; }
 
         /// <summary>
         /// The current state of this Order
