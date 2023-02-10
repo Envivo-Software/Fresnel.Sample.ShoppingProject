@@ -22,7 +22,7 @@ namespace Acme.OnlineShopping.Shopping.Dependencies
             // You could run Some domain rules/checks here,
             // before creating an Order.
 
-            var result = new Order(account)
+            var newOrder = new Order(account)
             {
                 OrderNo = Environment.TickCount,
                 PlacementDate = DateTime.Now,
@@ -37,7 +37,12 @@ namespace Acme.OnlineShopping.Shopping.Dependencies
                     .ToList()
             };
 
-            return result;
+            foreach (var orderItem in newOrder.OrderItems)
+            {
+                orderItem.Order = newOrder;
+            }
+
+            return newOrder;
         }
     }
 }
