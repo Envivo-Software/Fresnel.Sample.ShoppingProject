@@ -24,6 +24,7 @@ namespace Acme.OnlineShopping.Web
         /// The Shopping Cart this item belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
+        [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
         public ShoppingCart? ShoppingCart { get; internal set; }
 

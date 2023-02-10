@@ -36,6 +36,7 @@ namespace Acme.OnlineShopping.Web
         /// The Web User this cart belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
+        [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
         public WebUser? WebUser { get; internal set; }
 
@@ -133,6 +134,15 @@ namespace Acme.OnlineShopping.Web
             {
                 RemoveFromItems(item);
             }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return WebUser?.ToString() ?? string.Empty;
         }
     }
 }

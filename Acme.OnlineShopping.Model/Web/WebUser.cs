@@ -23,6 +23,7 @@ namespace Acme.OnlineShopping.Web
         /// The Customer what this web user belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
+        [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
         public Customer? Customer { get; internal set; }
 
@@ -47,5 +48,14 @@ namespace Acme.OnlineShopping.Web
         /// </summary>
         [Relationship(RelationshipType.Owns)]
         public ShoppingCart? ShoppingCart { get; set; }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"{Login_ID}";
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace Acme.OnlineShopping.Shopping
         /// The Order this item belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
+        [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
         public Order Order { get; internal set; }
 
@@ -37,7 +38,7 @@ namespace Acme.OnlineShopping.Shopping
         /// <summary>
         /// The number of items ordered
         /// </summary>
-        [JsonInclude] 
+        [JsonInclude]
         public int Quantity { get; internal set; }
 
         /// <summary>
@@ -46,5 +47,14 @@ namespace Acme.OnlineShopping.Shopping
         [DataType(DataType.Currency)]
         [JsonInclude]
         public double Price { get; internal set; }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Product?.ToString() ?? string.Empty;
+        }
     }
 }

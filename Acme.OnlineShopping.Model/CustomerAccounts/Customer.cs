@@ -85,5 +85,14 @@ namespace Acme.OnlineShopping.CustomerAccounts
             newOrder.Account = this.Account;
             newOrder.Account.Orders.Add(newOrder);
         }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Name?.ToString() ?? string.Empty;
+        }
     }
 }

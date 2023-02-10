@@ -20,7 +20,7 @@ namespace Acme.OnlineShopping.Shopping
         /// <inheritdoc/>
         /// </summary>
         /// <remarks>Allow the JSON serialiser to create this object, but prevent the UI from allowing manually created instances</remarks>
-        [Visible(isVisible: false)] 
+        [Visible(isVisible: false)]
         public Order()
         {
             this.Account = new Account();
@@ -46,6 +46,7 @@ namespace Acme.OnlineShopping.Shopping
         /// The account this order belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
+        [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
         public Account Account { get; internal set; }
 
@@ -101,5 +102,14 @@ namespace Acme.OnlineShopping.Shopping
         [UI(renderOption: UiRenderOption.InlineExpanded)]
         [JsonInclude]
         public ICollection<OrderItem> OrderItems { get; internal set; }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"{OrderNo}";
+        }
     }
 }

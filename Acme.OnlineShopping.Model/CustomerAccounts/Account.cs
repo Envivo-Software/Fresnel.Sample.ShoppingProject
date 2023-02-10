@@ -33,6 +33,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// The customer this account belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
+        [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
         public Customer Customer { get; internal set; }
 
@@ -78,5 +79,14 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// 
         /// </summary>
         public bool IsClosed => ClosedOn != null;
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return Customer?.ToString() ?? string.Empty;
+        }
     }
 }

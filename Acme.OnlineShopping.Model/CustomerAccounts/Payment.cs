@@ -39,6 +39,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// The Order that this payment is for
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
+        [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
         public Order Order { get; internal set; }
 
