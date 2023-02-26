@@ -5,6 +5,7 @@ using Acme.OnlineShopping.Shopping.Dependencies;
 using Acme.OnlineShopping.Stock;
 using Acme.OnlineShopping.Stock.Dependencies;
 using Envivo.Fresnel.ModelAttributes;
+using Envivo.Fresnel.ModelTypes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -134,6 +135,15 @@ namespace Acme.OnlineShopping.Web
             {
                 RemoveFromItems(item);
             }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        IAggregateReference<T> IAggregateRoot.ToReference<T>()
+        {
+            return AggregateReference<T>.From(this);
         }
 
         /// <summary>

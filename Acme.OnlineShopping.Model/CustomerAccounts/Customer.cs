@@ -4,6 +4,7 @@ using Acme.OnlineShopping.Contacts;
 using Acme.OnlineShopping.Shopping;
 using Acme.OnlineShopping.Web;
 using Envivo.Fresnel.ModelAttributes;
+using Envivo.Fresnel.ModelTypes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -93,6 +94,15 @@ namespace Acme.OnlineShopping.CustomerAccounts
         public override string ToString()
         {
             return Name?.ToString() ?? string.Empty;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        IAggregateReference<T> IAggregateRoot.ToReference<T>()
+        {
+            return AggregateReference<T>.From(this);
         }
     }
 }

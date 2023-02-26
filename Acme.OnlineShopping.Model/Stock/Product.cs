@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 using Acme.OnlineShopping.Stock.Dependencies;
 using Envivo.Fresnel.ModelAttributes;
+using Envivo.Fresnel.ModelTypes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
@@ -81,6 +82,15 @@ namespace Acme.OnlineShopping.Stock
             {
                 this.Categories.Add(category);
             }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        IAggregateReference<T> IAggregateRoot.ToReference<T>()
+        {
+            return AggregateReference<T>.From(this);
         }
 
         /// <summary>

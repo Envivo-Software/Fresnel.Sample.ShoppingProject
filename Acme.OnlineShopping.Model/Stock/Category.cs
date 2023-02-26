@@ -1,6 +1,7 @@
 // SPDX-FileCopyrightText: Copyright (c) 2022-2023 Envivo Software
 // SPDX-License-Identifier: Apache-2.0
 using Envivo.Fresnel.ModelAttributes;
+using Envivo.Fresnel.ModelTypes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 using System.ComponentModel.DataAnnotations;
 
@@ -47,6 +48,15 @@ namespace Acme.OnlineShopping.Stock
         /// </summary>
         [Relationship(RelationshipType.Has)]
         public ICollection<Product> Products { get; set; }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        IAggregateReference<T> IAggregateRoot.ToReference<T>()
+        {
+            return AggregateReference<T>.From(this);
+        }
 
         /// <summary>
         /// <inheritdoc/>

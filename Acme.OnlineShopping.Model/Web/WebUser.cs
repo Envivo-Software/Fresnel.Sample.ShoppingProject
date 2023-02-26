@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 using Acme.OnlineShopping.CustomerAccounts;
 using Envivo.Fresnel.ModelAttributes;
+using Envivo.Fresnel.ModelTypes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -48,6 +49,15 @@ namespace Acme.OnlineShopping.Web
         /// </summary>
         [Relationship(RelationshipType.Owns)]
         public ShoppingCart? ShoppingCart { get; set; }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        IAggregateReference<T> IAggregateRoot.ToReference<T>()
+        {
+            return AggregateReference<T>.From(this);
+        }
 
         /// <summary>
         /// <inheritdoc/>
