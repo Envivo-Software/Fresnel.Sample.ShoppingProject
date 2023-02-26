@@ -1,5 +1,6 @@
 ﻿// SPDX-FileCopyrightText: Copyright (c) 2022-2023 Envivo Software
 // SPDX-License-Identifier: Apache-2.0
+using Acme.OnlineShopping.Stock;
 using Envivo.Fresnel.ModelTypes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 
@@ -10,60 +11,70 @@ namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
     /// </summary>
     public class CustomerRepository : IRepository<Customer>
     {
-        private static readonly InMemoryRepository<Customer> _InMemoryRepository = new();
+        private readonly InMemoryRepository<Customer> _InMemoryRepository = new();
+
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        /// <param name="aggregateRoot"></param>
         /// <returns></returns>
-        public IQueryable<Customer> GetAll()
+        public Task DeleteAsync(Customer aggregateRoot)
         {
-            return _InMemoryRepository.GetAll();
+            return _InMemoryRepository.DeleteAsync(aggregateRoot);
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
         /// <returns></returns>
-        public Customer? Load(Guid id)
+        public IQueryable<Customer> GetQuery()
         {
-            return _InMemoryRepository.Load(id);
+            return _InMemoryRepository.GetQuery();
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public int Save(Customer Customer, IEnumerable<object> newObjects, IEnumerable<object> modifiedObjects, IEnumerable<object> deletedObjects)
+        public Task<Customer> LoadAsync(Guid id)
         {
-            return _InMemoryRepository.Save(Customer, newObjects, modifiedObjects, deletedObjects);
+            return _InMemoryRepository.LoadAsync(id);
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        /// <param name="aggregateRoot"></param>
         /// <returns></returns>
-        public void Delete(Customer Customer)
+        public Task<IAggregateLock> LockAsync(Customer aggregateRoot)
         {
-            _InMemoryRepository.Delete(Customer);
+            return _InMemoryRepository.LockAsync(aggregateRoot);
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        /// <param name="aggregateRoot"></param>
+        /// <param name="newObjects"></param>
+        /// <param name="modifiedObjects"></param>
+        /// <param name="deletedObjects"></param>
         /// <returns></returns>
-        public IAggregateLock? Lock(Customer Customer)
+        public Task<int> SaveAsync(Customer aggregateRoot, IEnumerable<object> newObjects, IEnumerable<object> modifiedObjects, IEnumerable<object> deletedObjects)
         {
-            return _InMemoryRepository.Lock(Customer);
+            return _InMemoryRepository.SaveAsync(aggregateRoot, newObjects, modifiedObjects, deletedObjects);
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        /// <param name="aggregateRoot"></param>
         /// <returns></returns>
-        public void Unlock(Customer Customer)
+        /// <exception cref="NotImplementedException"></exception>
+        public Task UnlockAsync(Customer aggregateRoot)
         {
-            _InMemoryRepository.Unlock(Customer);
+            return Task.CompletedTask;
         }
     }
 }

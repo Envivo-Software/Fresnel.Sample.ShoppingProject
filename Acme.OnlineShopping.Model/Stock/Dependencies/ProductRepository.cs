@@ -10,68 +10,74 @@ namespace Acme.OnlineShopping.Stock.Dependencies
     /// </summary>
     public class ProductRepository : IRepository<Product>
     {
-        private static InMemoryRepository<Product> _InMemoryRepository = new();
+        private readonly InMemoryRepository<Product> _InMemoryRepository;
 
         public ProductRepository(DemoProductsBuilder demoProductsBuilder)
         {
-            if (!_InMemoryRepository.GetAll().Any())
-            {
-                _InMemoryRepository = new(demoProductsBuilder.Build());
-            }
+            _InMemoryRepository = new InMemoryRepository<Product>(demoProductsBuilder.Build());
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="aggregateRoot"></param>
+        /// <returns></returns>
+        public Task DeleteAsync(Product aggregateRoot)
+        {
+            return _InMemoryRepository.DeleteAsync(aggregateRoot);
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
         /// <returns></returns>
-        public IQueryable<Product> GetAll()
+        public IQueryable<Product> GetQuery()
         {
-            return _InMemoryRepository.GetAll();
+            return _InMemoryRepository.GetQuery();
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        /// <param name="id"></param>
         /// <returns></returns>
-        public Product? Load(Guid id)
+        public Task<Product> LoadAsync(Guid id)
         {
-            return _InMemoryRepository.Load(id);
+            return _InMemoryRepository.LoadAsync(id);
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        /// <param name="aggregateRoot"></param>
         /// <returns></returns>
-        public int Save(Product product, IEnumerable<object> newObjects, IEnumerable<object> modifiedObjects, IEnumerable<object> deletedObjects)
+        public Task<IAggregateLock> LockAsync(Product aggregateRoot)
         {
-            return _InMemoryRepository.Save(product, newObjects, modifiedObjects, deletedObjects);
+            return _InMemoryRepository.LockAsync(aggregateRoot);
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        /// <param name="aggregateRoot"></param>
+        /// <param name="newObjects"></param>
+        /// <param name="modifiedObjects"></param>
+        /// <param name="deletedObjects"></param>
         /// <returns></returns>
-        public void Delete(Product product)
+        public Task<int> SaveAsync(Product aggregateRoot, IEnumerable<object> newObjects, IEnumerable<object> modifiedObjects, IEnumerable<object> deletedObjects)
         {
-            _InMemoryRepository.Delete(product);
+            return _InMemoryRepository.SaveAsync(aggregateRoot, newObjects, modifiedObjects, deletedObjects);
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        /// <param name="aggregateRoot"></param>
         /// <returns></returns>
-        public IAggregateLock? Lock(Product product)
+        /// <exception cref="NotImplementedException"></exception>
+        public Task UnlockAsync(Product aggregateRoot)
         {
-            return _InMemoryRepository.Lock(product);
-        }
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <returns></returns>
-        public void Unlock(Product product)
-        {
-            _InMemoryRepository.Unlock(product);
+            return Task.CompletedTask;
         }
     }
 }

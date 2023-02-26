@@ -61,8 +61,9 @@ namespace Acme.OnlineShopping.Stock.Dependencies
                  },
             };
 
-            AssignSynthCategories(results);
-            AssignMidiCategories(results);
+            var allKnownCategories = _CategoryRepository.GetQuery().ToList();
+            AssignSynthCategories(allKnownCategories, results);
+            AssignMidiCategories(allKnownCategories, results);
 
             foreach (var product in results)
             {
@@ -72,10 +73,10 @@ namespace Acme.OnlineShopping.Stock.Dependencies
             return results;
         }
 
-        private void AssignSynthCategories(List<Product> results)
+        private void AssignSynthCategories(IEnumerable<Category> allCategories, List<Product> results)
         {
             var synthCategories =
-                _CategoryRepository.GetAll()
+                allCategories
                 .Where(c => c.Name == "Synthesizer")
                 .ToList();
 
@@ -89,10 +90,10 @@ namespace Acme.OnlineShopping.Stock.Dependencies
             }
         }
 
-        private void AssignMidiCategories(List<Product> results)
+        private void AssignMidiCategories(IEnumerable<Category> allCategories, List<Product> results)
         {
             var midiCategories =
-                _CategoryRepository.GetAll()
+                allCategories
                 .Where(c => c.Name == "Midi Controller")
                 .ToList();
 
