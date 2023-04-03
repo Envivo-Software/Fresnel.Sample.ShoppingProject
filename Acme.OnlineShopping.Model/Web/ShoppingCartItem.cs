@@ -34,7 +34,8 @@ namespace Acme.OnlineShopping.Web
         [Relationship(type: RelationshipType.Has)]
         [UI(renderOption: UiRenderOption.InlineSimple)]
         [FilterQuerySpecification(typeof(ProductQuerySpecification))]
-        public Product? Product { get; set; }
+        [JsonInclude]
+        public Product? Product { get; internal set; }
 
         /// <summary>
         /// The number of items requested
