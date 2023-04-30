@@ -14,4 +14,17 @@
     <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="1.3.0" />
   </ItemGroup>
 
+	<Target Name="EmbedDocumentation" BeforeTargets="PrepareForBuild">
+		<ItemGroup>
+			<EmbeddedResource Include="@(DocFileItem)">
+				<LogicalName>$(MSBuildProjectName).xml</LogicalName>
+			</EmbeddedResource>
+		</ItemGroup>
+	</Target>
+
+	<PropertyGroup>
+		<PublishDocumentationFile>false</PublishDocumentationFile>
+		<PublishReferencesDocumentationFiles>false</PublishReferencesDocumentationFiles>
+	</PropertyGroup>
+
 </Project>
