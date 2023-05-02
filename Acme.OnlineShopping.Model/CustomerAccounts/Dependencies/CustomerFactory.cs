@@ -49,6 +49,7 @@ namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
                 Account = new Account
                 {
                     Id = Guid.NewGuid(),
+                    AccountNo = Environment.TickCount,
                     OpenedOn = DateTime.Now,
                     BillingAddress = new AddressInfo(),
                 },

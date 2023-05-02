@@ -31,6 +31,12 @@ namespace Acme.OnlineShopping.CustomerAccounts
         public Guid Id { get; set; }
 
         /// <summary>
+        /// The reference number for this Account
+        /// </summary>
+        [JsonInclude]
+        public int AccountNo { get; internal set; }
+
+        /// <summary>
         /// The customer this account belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
@@ -97,7 +103,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// <returns></returns>
         public override string ToString()
         {
-            return Customer?.ToString() ?? string.Empty;
+            return $"No:{AccountNo} ({Customer})";
         }
     }
 }
