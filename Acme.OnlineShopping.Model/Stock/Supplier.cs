@@ -27,7 +27,7 @@ namespace Acme.OnlineShopping.Stock
         /// The Supplier's Phone contact info
         /// </summary>
         [Relationship(RelationshipType.Owns)]
-        public PhoneInfo Phone { get; set; }
+        public ContactInfo Phone { get; set; }
 
         /// <summary>
         /// The Supplier's email address

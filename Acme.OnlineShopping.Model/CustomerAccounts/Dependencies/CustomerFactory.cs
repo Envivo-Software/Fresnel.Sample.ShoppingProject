@@ -38,7 +38,7 @@ namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
                     LastName = lastName
                 },
                 Address = new AddressInfo(),
-                Phone = new PhoneInfo(),
+                ContactInformation = new ContactInfo(),
                 WebUser = new WebUser
                 {
                     Id = Guid.NewGuid(),

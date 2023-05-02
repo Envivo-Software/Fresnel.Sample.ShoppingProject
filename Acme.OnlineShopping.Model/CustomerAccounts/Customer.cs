@@ -23,7 +23,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         {
             this.Name = new NameInfo();
             this.Address = new AddressInfo();
-            this.Phone = new PhoneInfo();
+            this.ContactInformation = new ContactInfo();
             this.Account = new Account();
             this.WebUser = new WebUser();
         }
@@ -53,13 +53,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// </summary>
         [UI(renderOption: UiRenderOption.InlineSimple)]
         [Relationship(RelationshipType.Owns)]
-        public PhoneInfo Phone { get; set; }
-
-        /// <summary>
-        /// The customer's email address
-        /// </summary>
-        [DataType(DataType.EmailAddress)]
-        public string? Email { get; set; }
+        public ContactInfo ContactInformation { get; set; }
 
         /// <summary>
         /// The customer's account, where billing and payment occurs

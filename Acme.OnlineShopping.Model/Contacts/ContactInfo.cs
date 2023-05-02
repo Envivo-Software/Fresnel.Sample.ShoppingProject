@@ -5,9 +5,9 @@ using System.ComponentModel.DataAnnotations;
 namespace Acme.OnlineShopping.Contacts
 {
     /// <summary>
-    /// Phone contact details
+    /// Contact details for a person or party
     /// </summary>
-    public class PhoneInfo
+    public class ContactInfo
     {
         /// <summary>
         /// <inheritdoc/>
@@ -34,12 +34,18 @@ namespace Acme.OnlineShopping.Contacts
         public string Extension { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        [DataType(DataType.EmailAddress)]
+        public string? Email { get; set; }
+
+        /// <summary>
         /// <inheritdoc/>
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{AreaCode} {Number} {Extension}";
+            return $"{AreaCode} {Number} {Extension}, {Email}";
         }
-    }
+            }
 }
