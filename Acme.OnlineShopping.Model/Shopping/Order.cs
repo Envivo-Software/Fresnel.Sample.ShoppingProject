@@ -24,14 +24,14 @@ namespace Acme.OnlineShopping.Shopping
         [Visible(isVisible: false)]
         public Order()
         {
-            this.Account = new Account();
+            this.Account = null;
             this.OrderItems = new List<OrderItem>();
         }
 
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
-        public Order(Account account)
+        public Order(AggregateReference<Account> account)
             : this()
         {
             this.Account = account;
@@ -44,12 +44,12 @@ namespace Acme.OnlineShopping.Shopping
         public Guid Id { get; set; }
 
         /// <summary>
-        /// The account this order belongs to
+        /// The Account this order belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
         [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
-        public Account Account { get; internal set; }
+        public AggregateReference<Account> Account { get; internal set; }
 
         /// <summary>
         /// The reference number for this order
@@ -120,7 +120,7 @@ namespace Acme.OnlineShopping.Shopping
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{OrderNo}";
+            return $"{OrderNo}, placed {PlacementDate:d}, {Payment}";
         }
     }
 }

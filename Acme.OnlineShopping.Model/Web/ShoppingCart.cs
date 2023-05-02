@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: Copyright (c) 2022-2023 Envivo Software
 // SPDX-License-Identifier: Apache-2.0
+using Acme.OnlineShopping.CustomerAccounts;
 using Acme.OnlineShopping.Shopping;
 using Acme.OnlineShopping.Shopping.Dependencies;
 using Acme.OnlineShopping.Stock;
@@ -50,6 +51,7 @@ namespace Acme.OnlineShopping.Web
         /// The items contained within this cart
         /// </summary>
         [Relationship(RelationshipType.Owns)]
+        [AllowedOperations(canAdd: false)]
         [UI(renderOption: UiRenderOption.InlineExpanded)]
         public ICollection<ShoppingCartItem> Items
         {
@@ -112,16 +114,7 @@ namespace Acme.OnlineShopping.Web
         /// <returns></returns>
         public Order ConfirmAndPlaceOrder(OrderBuilder orderBuilder, DateTime? placementDate)
         {
-            if (this.WebUser?.Customer == null)
-                return null;
-
-            var newOrder = orderBuilder.CreateOrder(this.WebUser.Customer.Account, this);
-            if (placementDate != null)
-            {
-                newOrder.PlacementDate = placementDate.Value;
-            }
-
-            this.WebUser?.Customer?.UpdateAccountWithNewOrder(newOrder);
+            var newOrder = orderBuilder.CreateOrder(this, placementDate);
 
             ClearAllItems();
 

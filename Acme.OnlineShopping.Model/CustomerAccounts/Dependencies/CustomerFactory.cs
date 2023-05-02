@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 using Acme.OnlineShopping.Contacts;
 using Acme.OnlineShopping.Web;
+using Envivo.Fresnel.ModelTypes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 
 namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
@@ -17,33 +18,7 @@ namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
         /// <returns></returns>
         public Customer Create()
         {
-            var customer = new Customer
-            {
-                Name = new NameInfo(),
-                Address = new AddressInfo(),
-                Phone = new PhoneInfo(),
-                WebUser = new WebUser
-                {
-                    State = UserState.New,
-                },
-                Account = new Account
-                {
-                    OpenedOn = DateTime.Now,
-                    BillingAddress = new AddressInfo(),
-                },
-            };
-
-            customer.WebUser.Customer = customer;
-
-            var shoppingCart = new ShoppingCart
-            {
-                WebUser = customer.WebUser
-            };
-            customer.WebUser.ShoppingCart = shoppingCart;
-
-            customer.Account.Customer = customer;
-
-            return customer;
+            return CreateWithName(null, null);
         }
 
         /// <summary>
@@ -54,12 +29,41 @@ namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
         /// <returns></returns>
         public Customer CreateWithName(string firstName, string lastName)
         {
-            var customer = Create();
-            customer.Name.FirstName = firstName;
-            customer.Name.LastName = lastName;
+            var customer = new Customer
+            {
+                Id = Guid.NewGuid(),
+                Name = new NameInfo
+                {
+                    FirstName = firstName,
+                    LastName = lastName
+                },
+                Address = new AddressInfo(),
+                Phone = new PhoneInfo(),
+                WebUser = new WebUser
+                {
+                    Id = Guid.NewGuid(),
+                    Login_ID = $"{lastName?.ToLower()}{firstName?.ToLower()?.First()}{DateTime.Now.Second}",
+                    Password = $"{Environment.TickCount}",
+                    State = UserState.New,
+                },
+                Account = new Account
+                {
+                    Id = Guid.NewGuid(),
+                    OpenedOn = DateTime.Now,
+                    BillingAddress = new AddressInfo(),
+                },
+            };
 
-            customer.WebUser.Login_ID = $"{lastName?.ToLower()}{firstName?.ToLower()?.First()}{DateTime.Now.Second}";
-            customer.WebUser.Password = $"{Environment.TickCount}";
+            customer.WebUser.Customer = customer;
+
+            var shoppingCart = new ShoppingCart
+            {
+                Id = Guid.NewGuid(),
+                WebUser = customer.WebUser
+            };
+            customer.WebUser.ShoppingCart = shoppingCart;
+
+            customer.Account.Customer = customer;
 
             return customer;
         }

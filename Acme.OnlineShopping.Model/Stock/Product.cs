@@ -19,7 +19,7 @@ namespace Acme.OnlineShopping.Stock
         public Product()
         {
             this.Stock = new List<StockDetail>();
-            this.Categories = new List<Category>();
+            this.Categories = new List<AggregateReference<Category>>();
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Acme.OnlineShopping.Stock
         /// </summary>
         [Relationship(RelationshipType.Has)]
         [FilterQuerySpecification(typeof(CategoryQuerySpecification))]
-        public ICollection<Category> Categories { get; set; }
+        public ICollection<AggregateReference<Category>> Categories { get; set; }
 
         /// <summary>
         /// Stock information for this product
@@ -80,7 +80,8 @@ namespace Acme.OnlineShopping.Stock
         {
             foreach (var category in categories)
             {
-                this.Categories.Add(category);
+                var aggregateRef = AggregateReference<Category>.From(category);
+                this.Categories.Add(aggregateRef);
             }
         }
 

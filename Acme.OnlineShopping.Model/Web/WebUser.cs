@@ -21,7 +21,7 @@ namespace Acme.OnlineShopping.Web
         public Guid Id { get; set; }
 
         /// <summary>
-        /// The Customer what this web user belongs to
+        /// The Customer that this web user belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
         [UI(renderOption: UiRenderOption.InlineSimple)]

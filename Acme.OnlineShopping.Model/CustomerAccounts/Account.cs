@@ -52,17 +52,18 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// Any Orders associated with this Account
         /// </summary>
         [Relationship(RelationshipType.Owns)]
-        public ICollection<Order> Orders { get; set; }
+        [JsonInclude]
+        public ICollection<Order> Orders { get; internal set; }
 
         /// <summary>
         /// Adds the given Order to this Account
         /// </summary>
-        /// <param name="order"></param>
+        /// <param name="newOrder"></param>
         [Visible(false)]
-        public void AddToOrders(Order order)
+        public void AddToOrders(Order newOrder)
         {
-            Orders.Add(order);
-            order.Account = this;
+            newOrder.Account = AggregateReference<Account>.From(this);
+            Orders.Add(newOrder);
         }
 
         /// <summary>

@@ -17,7 +17,7 @@ namespace Acme.OnlineShopping.Stock
         /// </summary>
         public Category()
         {
-            this.Products = new List<Product>();
+            this.Products = new List<AggregateReference<Product>>();
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Acme.OnlineShopping.Stock
         /// The products assigned to this category
         /// </summary>
         [Relationship(RelationshipType.Has)]
-        public ICollection<Product> Products { get; set; }
+        public ICollection<AggregateReference<Product>> Products { get; set; }
 
         /// <summary>
         /// <inheritdoc/>

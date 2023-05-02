@@ -78,16 +78,6 @@ namespace Acme.OnlineShopping.CustomerAccounts
         public WebUser WebUser { get; internal set; }
 
         /// <summary>
-        /// Ensures the given Order is associated with this Customer's Account
-        /// </summary>
-        /// <param name="newOrder"></param>
-        internal void UpdateAccountWithNewOrder(Order newOrder)
-        {
-            newOrder.Account = this.Account;
-            newOrder.Account.Orders.Add(newOrder);
-        }
-
-        /// <summary>
         /// <inheritdoc/>
         /// </summary>
         /// <returns></returns>
