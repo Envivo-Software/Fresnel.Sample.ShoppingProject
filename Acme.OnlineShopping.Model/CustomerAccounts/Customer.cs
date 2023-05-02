@@ -37,28 +37,25 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// <summary>
         /// The customer's name information
         /// </summary>
-        [UI(renderOption: UiRenderOption.InlineSimple)]
         [Relationship(RelationshipType.Owns)]
         public NameInfo Name { get; set; }
 
         /// <summary>
         /// The customer's default address
         /// </summary>
-        [UI(renderOption: UiRenderOption.InlineSimple)]
         [Relationship(RelationshipType.Owns)]
         public AddressInfo Address { get; set; }
 
         /// <summary>
         /// The customer's contact phone number
         /// </summary>
-        [UI(renderOption: UiRenderOption.InlineSimple)]
         [Relationship(RelationshipType.Owns)]
         public ContactInfo ContactInformation { get; set; }
 
         /// <summary>
         /// The customer's account, where billing and payment occurs
         /// </summary>
-        [UI(renderOption: UiRenderOption.SeparateTabExpanded)]
+        [UI(renderOption: UiRenderOption.InlineSimple)]
         [Relationship(RelationshipType.Owns)]
         [JsonInclude]
         public Account Account { get; internal set; }
@@ -66,7 +63,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// <summary>
         /// The user's entry into the online shopping site
         /// </summary>
-        [UI(renderOption: UiRenderOption.SeparateTabExpanded)]
+        [UI(renderOption: UiRenderOption.InlineSimple)]
         [Relationship(RelationshipType.Owns)]
         [JsonInclude]
         public WebUser WebUser { get; internal set; }

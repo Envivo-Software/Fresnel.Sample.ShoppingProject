@@ -48,6 +48,7 @@ namespace Acme.OnlineShopping.Web
         /// The user's shopping cart
         /// </summary>
         [Relationship(RelationshipType.Owns)]
+        [UI(renderOption: UiRenderOption.InlineSimple)]
         public ShoppingCart? ShoppingCart { get; set; }
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace Acme.OnlineShopping.Web
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{Login_ID}";
+            return $"LoginID: {Login_ID}";
         }
     }
 }
