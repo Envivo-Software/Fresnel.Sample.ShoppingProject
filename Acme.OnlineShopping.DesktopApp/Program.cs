@@ -1,6 +1,6 @@
 // SPDX-FileCopyrightText: Copyright (c) 2022-2023 Envivo Software
 // SPDX-License-Identifier: Apache-2.0
-using Envivo.Fresnel.Bootstrap;
+using Envivo.Fresnel.Bootstrap.WinForms;
 using Microsoft.Extensions.DependencyInjection;
 using System.Threading;
 using System.Windows.Forms;
