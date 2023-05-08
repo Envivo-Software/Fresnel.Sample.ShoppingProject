@@ -65,7 +65,7 @@ namespace Acme.OnlineShopping.Web
         /// <param name="item"></param>
         public void AddToItems(ShoppingCartItem item)
         {
-            item.ShoppingCart = this;
+            item.ShoppingCart = AggregateReference<ShoppingCart>.From(this);
             _Items.Add(item);
         }
 

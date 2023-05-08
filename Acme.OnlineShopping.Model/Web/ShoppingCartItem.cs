@@ -3,6 +3,7 @@
 using Acme.OnlineShopping.Stock;
 using Acme.OnlineShopping.Stock.Dependencies;
 using Envivo.Fresnel.ModelAttributes;
+using Envivo.Fresnel.ModelTypes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -26,7 +27,7 @@ namespace Acme.OnlineShopping.Web
         [Relationship(RelationshipType.OwnedBy)]
         [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
-        public ShoppingCart? ShoppingCart { get; internal set; }
+        public AggregateReference<ShoppingCart>? ShoppingCart { get; internal set; }
 
         /// <summary>
         /// The Product added to the cart
