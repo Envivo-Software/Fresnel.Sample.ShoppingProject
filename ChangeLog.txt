@@ -1,3 +1,19 @@
+2023-05-08:
+🎁 New features:
+- Added examples of AggregateReference<T>
+- Now includes XML documentation as an Embedded Resource
+
+🎨 Improvements:
+- Changed UI RenderOptions, so that AggregateRoot contents are easier to identify
+- Replaced PhoneInfo with ContactInfo
+- Updated ToString() contents, to make it easier to track objects in the UI
+
+🐞 Fixes:
+- Updated package references
+- Updated Repositories and Queries with async methods
+
+==============================================================================
+
 2023-02-11:
 🐞 Fixes:
 - OrderBuilder: Set each OrderItem's parent Order
@@ -6,6 +22,7 @@
 🎨 Improvements:
 - Show parent objects as UiRenderOption.InlineSimple, instead of cluttering UI with tabs
 
+==============================================================================
 
 2023-01-31:
 🐞 Fixes:
@@ -21,5 +38,6 @@
 - Updated copyright notices
 - Code cleanup
 
+==============================================================================
 
 2022-09-01: PREVIEW RELEASE
