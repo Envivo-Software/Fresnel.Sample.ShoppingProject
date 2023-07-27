@@ -56,7 +56,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// The customer's account, where billing and payment occurs
         /// </summary>
         [UI(renderOption: UiRenderOption.InlineSimple)]
-        [Relationship(RelationshipType.Owns)]
+        [Relationship(RelationshipType.Has)]
         [JsonInclude]
         public Account Account { get; internal set; }
 
@@ -75,15 +75,6 @@ namespace Acme.OnlineShopping.CustomerAccounts
         public override string ToString()
         {
             return Name?.ToString() ?? string.Empty;
-        }
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <returns></returns>
-        IAggregateReference<T> IAggregateRoot.ToReference<T>()
-        {
-            return AggregateReference<T>.From(this);
         }
     }
 }

@@ -89,15 +89,6 @@ namespace Acme.OnlineShopping.Stock
         /// <inheritdoc/>
         /// </summary>
         /// <returns></returns>
-        IAggregateReference<T> IAggregateRoot.ToReference<T>()
-        {
-            return AggregateReference<T>.From(this);
-        }
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <returns></returns>
         public override string ToString()
         {
             return this.Name;

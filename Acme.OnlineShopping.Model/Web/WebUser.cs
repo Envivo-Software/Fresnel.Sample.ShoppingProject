@@ -24,7 +24,7 @@ namespace Acme.OnlineShopping.Web
         /// The Customer that this web user belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
-        [UI(renderOption: UiRenderOption.InlineSimple)]
+        [UI(renderOption: UiRenderOption.SeparateTabExpanded)]
         [JsonInclude]
         public Customer? Customer { get; internal set; }
 
@@ -50,15 +50,6 @@ namespace Acme.OnlineShopping.Web
         [Relationship(RelationshipType.Owns)]
         [UI(renderOption: UiRenderOption.InlineSimple)]
         public ShoppingCart? ShoppingCart { get; set; }
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <returns></returns>
-        IAggregateReference<T> IAggregateRoot.ToReference<T>()
-        {
-            return AggregateReference<T>.From(this);
-        }
 
         /// <summary>
         /// <inheritdoc/>

@@ -109,15 +109,6 @@ namespace Acme.OnlineShopping.Shopping
         /// <inheritdoc/>
         /// </summary>
         /// <returns></returns>
-        IAggregateReference<T> IAggregateRoot.ToReference<T>()
-        {
-            return AggregateReference<T>.From(this);
-        }
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <returns></returns>
         public override string ToString()
         {
             return $"{OrderNo}, placed {PlacementDate:d}, {Payment}";

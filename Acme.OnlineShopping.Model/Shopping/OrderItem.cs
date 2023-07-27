@@ -31,7 +31,7 @@ namespace Acme.OnlineShopping.Shopping
         /// The product being ordered
         /// </summary>
         [Relationship(RelationshipType.Has)]
-        [UI(renderOption: UiRenderOption.InlineSimple)]
+        [UI(renderOption: UiRenderOption.SeparateTabExpanded)]
         [JsonInclude]
         public Product Product { get; internal set; }
 

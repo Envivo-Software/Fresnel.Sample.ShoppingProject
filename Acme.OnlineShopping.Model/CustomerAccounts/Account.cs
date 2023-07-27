@@ -47,6 +47,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// <summary>
         /// The Customer's billing address (if different from their address)
         /// </summary>
+        [Relationship(RelationshipType.Owns)]
         public AddressInfo BillingAddress { get; set; }
 
         /// <summary>
@@ -58,6 +59,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// Any Orders associated with this Account
         /// </summary>
         [Relationship(RelationshipType.Owns)]
+        [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
         public ICollection<Order> Orders { get; internal set; }
 
@@ -87,15 +89,6 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// 
         /// </summary>
         public bool IsClosed => ClosedOn != null;
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <returns></returns>
-        IAggregateReference<T> IAggregateRoot.ToReference<T>()
-        {
-            return AggregateReference<T>.From(this);
-        }
 
         /// <summary>
         /// <inheritdoc/>

@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -8,23 +7,19 @@
     <AssemblyVersion>1.2206.20.0</AssemblyVersion>
     <FileVersion>1.2206.20.0</FileVersion>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Envivo.Fresnel.ModelAttributes" Version="2.0.1" />
-    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="2.0.4" />
+    <PackageReference Include="Envivo.Fresnel.ModelAttributes" Version="2.2.5" />
+    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="2.1.1" />
   </ItemGroup>
-
-	<Target Name="EmbedDocumentation" BeforeTargets="PrepareForBuild">
-		<ItemGroup>
-			<EmbeddedResource Include="@(DocFileItem)">
-				<LogicalName>$(MSBuildProjectName).xml</LogicalName>
-			</EmbeddedResource>
-		</ItemGroup>
-	</Target>
-
-	<PropertyGroup>
-		<PublishDocumentationFile>false</PublishDocumentationFile>
-		<PublishReferencesDocumentationFiles>false</PublishReferencesDocumentationFiles>
-	</PropertyGroup>
-
+  <Target Name="EmbedDocumentation" BeforeTargets="PrepareForBuild">
+    <ItemGroup>
+      <EmbeddedResource Include="@(DocFileItem)">
+        <LogicalName>$(MSBuildProjectName).xml</LogicalName>
+      </EmbeddedResource>
+    </ItemGroup>
+  </Target>
+  <PropertyGroup>
+    <PublishDocumentationFile>false</PublishDocumentationFile>
+    <PublishReferencesDocumentationFiles>false</PublishReferencesDocumentationFiles>
+  </PropertyGroup>
 </Project>
