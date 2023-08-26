@@ -8,7 +8,7 @@
     <FileVersion>0.2206.20.1</FileVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Envivo.Fresnel" Version="0.26.31-preview" />
+    <PackageReference Include="Envivo.Fresnel" Version="1.0.2-preview" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Acme.OnlineShopping.Model\Acme.OnlineShopping.Model.csproj" />

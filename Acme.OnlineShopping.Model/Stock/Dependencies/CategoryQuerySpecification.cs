@@ -24,10 +24,9 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <inheritdoc/>
         /// </summary>
         /// <returns></returns>
-        public Task<IEnumerable<Category>> GetResultsAsync()
+        public async Task<IEnumerable<Category>> GetResultsAsync()
         {
-            var result = _CategoryRepository.GetQuery().AsEnumerable();
-            return Task.FromResult(result);
+            return await Task.FromResult(_CategoryRepository.GetQuery().AsEnumerable());
         }
     }
 }

@@ -23,9 +23,9 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// </summary>
         /// <param name="aggregateRoot"></param>
         /// <returns></returns>
-        public Task DeleteAsync(Category aggregateRoot)
+        public async Task DeleteAsync(Category aggregateRoot)
         {
-            return _InMemoryRepository.DeleteAsync(aggregateRoot);
+            await _InMemoryRepository.DeleteAsync(aggregateRoot);
         }
 
         /// <summary>
@@ -42,9 +42,9 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public Task<Category> LoadAsync(Guid id)
+        public async Task<Category> LoadAsync(Guid id)
         {
-            return _InMemoryRepository.LoadAsync(id);
+            return await _InMemoryRepository.LoadAsync(id);
         }
 
         /// <summary>
@@ -52,9 +52,9 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// </summary>
         /// <param name="aggregateRoot"></param>
         /// <returns></returns>
-        public Task<IAggregateLock> LockAsync(Category aggregateRoot)
+        public async Task<IAggregateLock> LockAsync(Category aggregateRoot)
         {
-            return _InMemoryRepository.LockAsync(aggregateRoot);
+            return await _InMemoryRepository.LockAsync(aggregateRoot);
         }
 
         /// <summary>
@@ -65,9 +65,9 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <param name="modifiedObjects"></param>
         /// <param name="deletedObjects"></param>
         /// <returns></returns>
-        public Task<int> SaveAsync(Category aggregateRoot, IEnumerable<object> newObjects, IEnumerable<object> modifiedObjects, IEnumerable<object> deletedObjects)
+        public async Task<int> SaveAsync(Category aggregateRoot, IEnumerable<object> newObjects, IEnumerable<object> modifiedObjects, IEnumerable<object> deletedObjects)
         {
-            return _InMemoryRepository.SaveAsync(aggregateRoot, newObjects, modifiedObjects, deletedObjects);
+            return await _InMemoryRepository.SaveAsync(aggregateRoot, newObjects, modifiedObjects, deletedObjects);
         }
 
         /// <summary>
@@ -76,9 +76,9 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <param name="aggregateRoot"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        public Task UnlockAsync(Category aggregateRoot)
+        public async Task UnlockAsync(Category aggregateRoot)
         {
-            return Task.CompletedTask;
+            await Task.CompletedTask;
         }
     }
 }
