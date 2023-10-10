@@ -51,7 +51,9 @@ namespace Acme.OnlineShopping.Web
         /// The items contained within this cart
         /// </summary>
         [Relationship(RelationshipType.Owns)]
-        [AllowedOperations(canAdd: false)]
+        [Collection(addMethodName: nameof(AddToItems),
+                    removeMethodName: nameof(RemoveFromItems))]
+        [AllowedOperations(canAdd: false, canCreate: false)]
         [UI(renderOption: UiRenderOption.InlineExpanded)]
         public ICollection<ShoppingCartItem> Items
         {

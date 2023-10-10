@@ -59,6 +59,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// Any Orders associated with this Account
         /// </summary>
         [Relationship(RelationshipType.Owns)]
+        [Collection(addMethodName: nameof(AddToOrders))]
         [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
         public ICollection<Order> Orders { get; internal set; }
