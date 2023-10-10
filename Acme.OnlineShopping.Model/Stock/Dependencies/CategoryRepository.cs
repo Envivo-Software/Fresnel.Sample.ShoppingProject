@@ -10,11 +10,11 @@ namespace Acme.OnlineShopping.Stock.Dependencies
     /// </summary>
     public class CategoryRepository : IRepository<Category>
     {
-        private readonly InMemoryRepository<Category> _InMemoryRepository;
+        private static InMemoryRepository<Category> _InMemoryRepository;
 
         public CategoryRepository(DemoCategoriesBuilder demoCategoriesBuilder)
         {
-            _InMemoryRepository = new(demoCategoriesBuilder.Build());
+            _InMemoryRepository ??= new(demoCategoriesBuilder.Build());
         }
 
 
