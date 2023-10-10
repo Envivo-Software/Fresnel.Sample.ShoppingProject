@@ -1,6 +1,8 @@
 // SPDX-FileCopyrightText: Copyright (c) 2022-2023 Envivo Software
 // SPDX-License-Identifier: Apache-2.0
+using Acme.OnlineShopping.Stock;
 using Acme.OnlineShopping.Web;
+using Envivo.Fresnel.ModelTypes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 
 namespace Acme.OnlineShopping.Shopping.Dependencies
@@ -34,7 +36,7 @@ namespace Acme.OnlineShopping.Shopping.Dependencies
                     shoppingCart.Items
                     .Select(li => new OrderItem
                     {
-                        Product = li.Product,
+                        Product = AggregateReference<Product>.From(li.Product),
                         Price = li.Price,
                         Quantity = li.Quantity,
                     })
