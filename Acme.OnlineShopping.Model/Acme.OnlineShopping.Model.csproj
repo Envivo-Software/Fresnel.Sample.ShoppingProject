@@ -8,8 +8,8 @@
     <FileVersion>1.2206.20.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Envivo.Fresnel.ModelAttributes" Version="2.2.5" />
-    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="2.1.1" />
+    <PackageReference Include="Envivo.Fresnel.ModelAttributes" Version="2.3.0" />
+    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="2.2.2" />
   </ItemGroup>
   <Target Name="EmbedDocumentation" BeforeTargets="PrepareForBuild">
     <ItemGroup>
