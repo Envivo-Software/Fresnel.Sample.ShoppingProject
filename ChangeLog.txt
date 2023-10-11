@@ -1,3 +1,18 @@
+2023-10-11:
+❗ BREAKING: Updated to .Net 7
+
+🎨 Improvements:
+- OrderItem now has AggregateReference to Product
+
+🐞 Fixes:
+- Now uses [CollectionAttribute] to bind custom Add/Remove methods
+- Repositories retain in memory contents during session
+- Use async/await consistently
+- Removed redundant IAggregateRoot.ToReference<T> methods
+- Updated package references
+
+==============================================================================
+
 2023-05-08:
 🎁 New features:
 - Added examples of AggregateReference<T>
