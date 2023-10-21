@@ -13,6 +13,10 @@ A great starting point for your new DDD prototypes.
   - .NET Desktop Development
   - .NET Multi-platform App UI Development
  
-![](https://www.envivo.co.uk/images/Fresnel_logo_docs_logo.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://www.envivo.co.uk/images/white_fg_transparent_bg_for_docs.png">
+  
+  <img alt="Fresnel for .NET" src="https://www.envivo.co.uk/images/color_fg_transparent_bg_for_docs.png">
+</picture>
 
 *Copyright 2022-2023 Envivo Software*
