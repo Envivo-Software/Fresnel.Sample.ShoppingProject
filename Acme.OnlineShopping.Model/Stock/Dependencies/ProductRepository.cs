@@ -10,12 +10,7 @@ namespace Acme.OnlineShopping.Stock.Dependencies
     /// </summary>
     public class ProductRepository : IRepository<Product>
     {
-        private static InMemoryRepository<Product> _InMemoryRepository;
-
-        public ProductRepository(DemoProductsBuilder demoProductsBuilder)
-        {
-            _InMemoryRepository ??= new InMemoryRepository<Product>(demoProductsBuilder.Build());
-        }
+        private readonly InMemoryRepository<Product> _InMemoryRepository = new();
 
         /// <summary>
         /// <inheritdoc/>
