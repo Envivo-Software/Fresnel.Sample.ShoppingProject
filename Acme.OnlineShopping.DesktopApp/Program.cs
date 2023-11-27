@@ -1,5 +1,6 @@
 // SPDX-FileCopyrightText: Copyright (c) 2022-2023 Envivo Software
 // SPDX-License-Identifier: Apache-2.0
+using Acme.OnlineShopping.CustomerAccounts.Dependencies;
 using Acme.OnlineShopping.Model;
 using Acme.OnlineShopping.Stock.Dependencies;
 using Envivo.Fresnel.Bootstrap.WinForms;
@@ -23,6 +24,7 @@ var mainForm =
     .WithServices(sc =>
     {
         // Because we're using InMemoryRepositories, we must use the same instance throughout:
+        sc.AddSingleton<CustomerRepository>();
         sc.AddSingleton<CategoryRepository>();
         sc.AddSingleton<ProductRepository>();
     })
