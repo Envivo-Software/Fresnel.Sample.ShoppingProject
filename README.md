@@ -8,7 +8,7 @@ A great starting point for your new DDD prototypes.
 ## Requirements
 
 - Windows 10 or above
-- .NET 7
+- .NET 8
 - Visual Studio 2022, with Workloads for:
   - .NET Desktop Development
   - .NET Multi-platform App UI Development
