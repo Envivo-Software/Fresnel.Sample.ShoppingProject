@@ -1,15 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>0.2206.20.1</AssemblyVersion>
-    <FileVersion>0.2206.20.1</FileVersion>
+    <AssemblyVersion>23.1127.0.0</AssemblyVersion>
+    <FileVersion>23.1127.0.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Envivo.Fresnel" Version="0.75.6-preview" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Envivo.Fresnel" Version="0.80.0-preview" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Acme.OnlineShopping.Model\Acme.OnlineShopping.Model.csproj" />
