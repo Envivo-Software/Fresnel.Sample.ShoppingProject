@@ -12,8 +12,10 @@ A great starting point for your new DDD prototypes.
 - Visual Studio 2022, with Workloads for:
   - .NET Desktop Development
   - .NET Multi-platform App UI Development
+- **OR** Visual Studio Code with:
+  - C# Dev Kit
  
-<picture>
+<picture id="fresnel_logo">
   <source media="(prefers-color-scheme: dark)" srcset="https://www.envivo.co.uk/images/white_fg_transparent_bg_for_docs.png">
   
   <img alt="Fresnel for .NET" src="https://www.envivo.co.uk/images/color_fg_transparent_bg_for_docs.png">
