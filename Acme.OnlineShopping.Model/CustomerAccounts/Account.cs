@@ -37,30 +37,16 @@ namespace Acme.OnlineShopping.CustomerAccounts
         public int AccountNo { get; internal set; }
 
         /// <summary>
-        /// The customer this account belongs to
-        /// </summary>
-        [Relationship(RelationshipType.OwnedBy)]
-        [UI(renderOption: UiRenderOption.InlineSimple)]
-        [JsonInclude]
-        public Customer Customer { get; internal set; }
-
-        /// <summary>
-        /// The Customer's billing address (if different from their address)
-        /// </summary>
-        [Relationship(RelationshipType.Owns)]
-        public AddressInfo BillingAddress { get; set; }
-
-        /// <summary>
         /// The date this Account was opened
         /// </summary>
         public DateTime OpenedOn { get; set; }
 
         /// <summary>
-        /// Any Orders associated with this Account
+        /// Any Orders associated with this Account. Orders are placed via the Shopping Cart associated with the Customer.
         /// </summary>
         [Relationship(RelationshipType.Owns)]
         [Collection(addMethodName: nameof(AddToOrders))]
-        [UI(renderOption: UiRenderOption.InlineSimple)]
+        [AllowedOperations(canAdd: false, canCreate: false, canRemove: false)]
         [JsonInclude]
         public ICollection<Order> Orders { get; internal set; }
 
@@ -80,6 +66,20 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// </summary>
         [Relationship(RelationshipType.Has)]
         public ICollection<Payment> Payments { get; set; }
+
+        /// <summary>
+        /// The Customer's billing address (if different from their address)
+        /// </summary>
+        [Relationship(RelationshipType.Owns)]
+        public AddressInfo BillingAddress { get; set; }
+
+        /// <summary>
+        /// The customer this account belongs to
+        /// </summary>
+        [Relationship(RelationshipType.OwnedBy)]
+        [UI(renderOption: UiRenderOption.InlineSimple)]
+        [JsonInclude]
+        public Customer Customer { get; internal set; }
 
         /// <summary>
         /// Optional: The date when the Account was closed
