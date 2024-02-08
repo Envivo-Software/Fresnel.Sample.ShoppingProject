@@ -8,7 +8,7 @@
     <FileVersion>23.1127.0.0</FileVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Envivo.Fresnel" Version="0.80.1-preview" />
+    <PackageReference Include="Envivo.Fresnel" Version="0.90.8-preview" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Envivo.Fresnel.ModelAttributes" Version="2.4.1" />
-    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="2.3.0" />
+    <PackageReference Include="Envivo.Fresnel.ModelTypes" Version="2.4.0" />
   </ItemGroup>
   <Target Name="EmbedDocumentation" BeforeTargets="PrepareForBuild">
     <ItemGroup>
