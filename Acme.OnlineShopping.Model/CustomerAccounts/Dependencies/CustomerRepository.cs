@@ -46,16 +46,6 @@ namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
         /// <inheritdoc/>
         /// </summary>
         /// <param name="aggregateRoot"></param>
-        /// <returns></returns>
-        public async Task<IAggregateLock> LockAsync(Customer aggregateRoot)
-        {
-            return await _InMemoryRepository.LockAsync(aggregateRoot);
-        }
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <param name="aggregateRoot"></param>
         /// <param name="newObjects"></param>
         /// <param name="modifiedObjects"></param>
         /// <param name="deletedObjects"></param>
@@ -63,17 +53,6 @@ namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
         public async Task<int> SaveAsync(Customer aggregateRoot, IEnumerable<object> newObjects, IEnumerable<object> modifiedObjects, IEnumerable<object> deletedObjects)
         {
             return await _InMemoryRepository.SaveAsync(aggregateRoot, newObjects, modifiedObjects, deletedObjects);
-        }
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <param name="aggregateRoot"></param>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public async Task UnlockAsync(Customer aggregateRoot)
-        {
-            await Task.CompletedTask;
         }
     }
 }

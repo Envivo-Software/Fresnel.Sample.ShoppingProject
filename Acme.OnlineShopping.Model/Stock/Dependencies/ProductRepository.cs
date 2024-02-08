@@ -45,16 +45,6 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         /// <inheritdoc/>
         /// </summary>
         /// <param name="aggregateRoot"></param>
-        /// <returns></returns>
-        public async Task<IAggregateLock> LockAsync(Product aggregateRoot)
-        {
-            return await _InMemoryRepository.LockAsync(aggregateRoot);
-        }
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <param name="aggregateRoot"></param>
         /// <param name="newObjects"></param>
         /// <param name="modifiedObjects"></param>
         /// <param name="deletedObjects"></param>
@@ -62,17 +52,6 @@ namespace Acme.OnlineShopping.Stock.Dependencies
         public async Task<int> SaveAsync(Product aggregateRoot, IEnumerable<object> newObjects, IEnumerable<object> modifiedObjects, IEnumerable<object> deletedObjects)
         {
             return await _InMemoryRepository.SaveAsync(aggregateRoot, newObjects, modifiedObjects, deletedObjects);
-        }
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <param name="aggregateRoot"></param>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        public async Task UnlockAsync(Product aggregateRoot)
-        {
-            await Task.CompletedTask;
         }
     }
 }
