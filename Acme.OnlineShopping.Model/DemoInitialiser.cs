@@ -40,7 +40,7 @@ namespace Acme.OnlineShopping.Model
         {
             foreach (var singleItem in items)
             {
-                await repo.SaveAsync(singleItem, new[] { singleItem }, Array.Empty<object>(), Array.Empty<object>());
+                await repo.SaveAsync(singleItem, [singleItem], [], []);
             }
         }
     }

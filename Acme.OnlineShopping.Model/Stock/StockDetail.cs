@@ -62,7 +62,7 @@ namespace Acme.OnlineShopping.Stock
         /// <returns></returns>
         public override string ToString()
         {
-            return string.Concat(this.Product, " (", this.UnitsInStock, " remaining");
+            return $"{this.Product} ({this.UnitsInStock} remaining)";
         }
     }
 }
