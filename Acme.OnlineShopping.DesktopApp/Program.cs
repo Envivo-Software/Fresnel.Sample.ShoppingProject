@@ -28,6 +28,7 @@ var mainForm =
         sc.AddSingleton<CategoryRepository>();
         sc.AddSingleton<ProductRepository>();
     })
+    .WithFileLogging()
     .WithPreStartupSteps(async sp =>
     {
         // This lets us setup demo data before the application starts:
