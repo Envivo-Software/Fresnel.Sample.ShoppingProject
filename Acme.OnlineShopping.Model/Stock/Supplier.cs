@@ -38,6 +38,6 @@ namespace Acme.OnlineShopping.Stock
         /// The Products this Supplier provides
         /// </summary>
         [Relationship(RelationshipType.Has)]
-        public ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; } = [];
     }
 }

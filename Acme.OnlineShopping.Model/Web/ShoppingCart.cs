@@ -52,7 +52,11 @@ namespace Acme.OnlineShopping.Web
         /// </summary>
         [Relationship(RelationshipType.Owns)]
         [Collection(addMethodName: nameof(AddToItems),
-                    removeMethodName: nameof(RemoveFromItems))]
+                    removeMethodName: nameof(RemoveFromItems),
+                    visibleColumnNames: [nameof(ShoppingCartItem.Product),
+                                         nameof(ShoppingCartItem.Quantity),
+                                         nameof(ShoppingCartItem.Price)],
+                    canExpandRows: true)]
         [AllowedOperations(canAdd: false, canCreate: false)]
         [UI(renderOption: UiRenderOption.InlineExpanded)]
         public ICollection<ShoppingCartItem> Items

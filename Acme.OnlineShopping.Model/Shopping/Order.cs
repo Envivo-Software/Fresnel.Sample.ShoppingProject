@@ -102,6 +102,7 @@ namespace Acme.OnlineShopping.Shopping
         /// <remarks>These items are automatically created from the Shopping Cart, and cannot be updated manually</remarks>
         [Relationship(RelationshipType.Owns)]
         [UI(renderOption: UiRenderOption.InlineExpanded)]
+        [Collection(canExpandRows: true)]
         [JsonInclude]
         public ICollection<OrderItem> OrderItems { get; internal set; }
 

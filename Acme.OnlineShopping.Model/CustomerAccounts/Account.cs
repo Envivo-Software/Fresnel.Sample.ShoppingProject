@@ -65,6 +65,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// The Payments associated with this Account
         /// </summary>
         [Relationship(RelationshipType.Has)]
+        [Collection(canExpandRows: true)]
         public ICollection<Payment> Payments { get; set; }
 
         /// <summary>
