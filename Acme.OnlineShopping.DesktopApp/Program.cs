@@ -21,7 +21,6 @@ var mainForm =
     new BlazorWinFormBuilder()
     .WithModelAssembly(domainClassType.Assembly)
     .WithFeature(Feature.UI_DoodleMode, FeatureState.On)
-    .WithFileLogging()
     .WithServices(sc =>
     {
         // Because we're using InMemoryRepositories, we must use the same instance throughout:
