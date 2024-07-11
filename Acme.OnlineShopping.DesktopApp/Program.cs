@@ -5,7 +5,11 @@ using Acme.OnlineShopping.Model;
 using Acme.OnlineShopping.Stock.Dependencies;
 using Envivo.Fresnel.Bootstrap.WinForms;
 using Envivo.Fresnel.Features;
+using Envivo.Fresnel.UI.Core.Model;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -15,29 +19,33 @@ Thread.CurrentThread.SetApartmentState(ApartmentState.STA);
 
 ApplicationConfiguration.Initialize();
 
-var domainClassType = typeof(Acme.OnlineShopping.Web.WebUser);
+var builder = new HostApplicationBuilder(args);
 
-var mainForm =
-    new BlazorWinFormBuilder()
-    .WithModelAssembly(domainClassType.Assembly)
+builder.AddFresnel(opt =>
+{
+    opt
+    .WithModelAssemblyFrom<Acme.OnlineShopping.Web.WebUser>()
     .WithFeature(Feature.UI_DoodleMode, FeatureState.On)
-    .WithServices(sc =>
-    {
-        // Because we're using InMemoryRepositories, we must use the same instance throughout:
-        sc.AddSingleton<CustomerRepository>();
-        sc.AddSingleton<CategoryRepository>();
-        sc.AddSingleton<ProductRepository>();
-    })
-    .WithFileLogging()
-    .WithPreStartupSteps(async sp =>
-    {
-        // This lets us setup demo data before the application starts:
-        var demoInitialiser = sp.GetService<DemoInitialiser>();
-        if (demoInitialiser != null)
-        {
-            await demoInitialiser.SetupDemoDataAsync();
-        }
-    })
-    .Build();
+    .WithFeature(Feature.UI_UserFeedback, FeatureState.On)
+    .WithDefaultFileLogging()
+    ;
 
+    // Because we're using InMemoryRepositories, we must use the same instance throughout:
+    builder.Services.AddSingleton<CustomerRepository>();
+    builder.Services.AddSingleton<CategoryRepository>();
+    builder.Services.AddSingleton<ProductRepository>();
+});
+
+var host = builder.Build();
+
+host.UseFresnel();
+
+// Setup demo data before the application starts:
+var demoInitialiser = host.Services.GetService<DemoInitialiser>();
+if (demoInitialiser != null)
+{
+    await demoInitialiser.SetupDemoDataAsync();
+}
+
+var mainForm = host.Services.GetService<BlazorWinForm>() ?? throw new NullReferenceException();
 Application.Run(mainForm);
