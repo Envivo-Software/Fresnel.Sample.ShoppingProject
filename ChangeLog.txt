@@ -1,3 +1,23 @@
+2024-05-24:
+🎁 New features:
+- Now uses Fluent Builder pattern
+
+==============================================================================
+2023-05-21:
+🎁 New features:
+- Show Orders in separate tab, and re-organised fields
+
+🎨 Improvements:
+- Added expandable collection rows
+- Updated collection attributes
+- Added default file logging
+- OrderItem now has AggregateReference to Product
+
+🐞 Fixes:
+- Removed repository LockAsync and UnlockAsync methods, as they belong to IAggregateLockService
+
+==============================================================================
+
 2023-11-27:
 ❗ BREAKING: Updated to .Net 8
 
