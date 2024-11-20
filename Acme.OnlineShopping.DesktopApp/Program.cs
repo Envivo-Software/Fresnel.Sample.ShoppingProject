@@ -47,5 +47,5 @@ if (demoInitialiser != null)
     await demoInitialiser.SetupDemoDataAsync();
 }
 
-var mainForm = host.Services.GetService<BlazorWinForm>() ?? throw new NullReferenceException();
+var mainForm = host.Services.GetService<BlazorWinForm>()!;
 Application.Run(mainForm);
