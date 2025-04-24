@@ -21,4 +21,4 @@ A great starting point for your new DDD prototypes.
   <img alt="Fresnel for .NET" src="https://www.envivo.co.uk/images/color_fg_transparent_bg_for_docs.png">
 </picture>
 
-*Copyright 2022-2024 Envivo Software*
+*Copyright 2022-2025 Envivo Software*
