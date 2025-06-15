@@ -1,17 +1,15 @@
-// SPDX-FileCopyrightText: Copyright (c) 2022-2025 Envivo Software
+﻿// SPDX-FileCopyrightText: Copyright (c) 2022-2025 Envivo Software
 // SPDX-License-Identifier: Apache-2.0
+using System;
+using System.Threading;
+using System.Windows.Forms;
 using Acme.OnlineShopping.CustomerAccounts.Dependencies;
 using Acme.OnlineShopping.Model;
 using Acme.OnlineShopping.Stock.Dependencies;
 using Envivo.Fresnel.Bootstrap.WinForms;
 using Envivo.Fresnel.Features;
-using Envivo.Fresnel.UI.Core.Model;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading;
-using System.Windows.Forms;
 
 // WinForms needs STA:
 Thread.CurrentThread.SetApartmentState(ApartmentState.Unknown);
