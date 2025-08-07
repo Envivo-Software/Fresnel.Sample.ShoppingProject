@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 using Acme.OnlineShopping.Shopping;
 using Envivo.Fresnel.ModelAttributes;
+using Envivo.Fresnel.ModelTypes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
@@ -41,7 +42,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         [Relationship(RelationshipType.OwnedBy)]
         [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
-        public Order Order { get; internal set; }
+        public EntityReference<Order> Order { get; internal set; }
 
         /// <summary>
         /// <inheritdoc/>

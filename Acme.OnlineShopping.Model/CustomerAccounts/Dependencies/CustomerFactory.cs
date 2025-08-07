@@ -64,7 +64,7 @@ namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
             };
             customer.WebUser.ShoppingCart = shoppingCart;
 
-            customer.Account.Customer = customer;
+            customer.Account.Customer = EntityReference<Customer>.From(customer);
 
             return customer;
         }

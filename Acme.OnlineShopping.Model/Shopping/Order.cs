@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright (c) 2022-2025 Envivo Software
+﻿// SPDX-FileCopyrightText: Copyright (c) 2022-2025 Envivo Software
 // SPDX-License-Identifier: Apache-2.0
 using Acme.OnlineShopping.Contacts;
 using Acme.OnlineShopping.CustomerAccounts;
@@ -91,7 +91,7 @@ namespace Acme.OnlineShopping.Shopping
                 _Payment = value;
                 if (_Payment != null)
                 {
-                    _Payment.Order = this;
+                    _Payment.Order = EntityReference<Order>.From(this);
                 }
             }
         }

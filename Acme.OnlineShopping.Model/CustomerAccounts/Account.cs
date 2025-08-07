@@ -80,7 +80,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         [Relationship(RelationshipType.OwnedBy)]
         [UI(renderOption: UiRenderOption.InlineSimple)]
         [JsonInclude]
-        public Customer Customer { get; internal set; }
+        public EntityReference<Customer> Customer { get; internal set; }
 
         /// <summary>
         /// Optional: The date when the Account was closed
