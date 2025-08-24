@@ -1,9 +1,19 @@
+2025-08-24:
+
+🎁 Improvements:
+- More use of Aggregate References, to decouple different contexts
+- More use of Entity References, to break cyclic references
+- Example of using IModelSpace to resolve objects from References
+
+==============================================================================
 2024-05-24:
+
 🎁 New features:
 - Now uses Fluent Builder pattern
 
 ==============================================================================
 2023-05-21:
+
 🎁 New features:
 - Show Orders in separate tab, and re-organised fields
 
