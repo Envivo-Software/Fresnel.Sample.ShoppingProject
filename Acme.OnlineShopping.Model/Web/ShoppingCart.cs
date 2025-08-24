@@ -1,5 +1,7 @@
-// SPDX-FileCopyrightText: Copyright (c) 2022-2025 Envivo Software
+﻿// SPDX-FileCopyrightText: Copyright (c) 2022-2025 Envivo Software
 // SPDX-License-Identifier: Apache-2.0
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using Acme.OnlineShopping.CustomerAccounts;
 using Acme.OnlineShopping.Shopping;
 using Acme.OnlineShopping.Shopping.Dependencies;
@@ -8,8 +10,6 @@ using Acme.OnlineShopping.Stock.Dependencies;
 using Envivo.Fresnel.ModelAttributes;
 using Envivo.Fresnel.ModelTypes;
 using Envivo.Fresnel.ModelTypes.Interfaces;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace Acme.OnlineShopping.Web
 {
@@ -35,12 +35,11 @@ namespace Acme.OnlineShopping.Web
         public Guid Id { get; set; }
 
         /// <summary>
-        /// The Web User this cart belongs to
+        /// The Customer this cart belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
-        [UI(renderOption: UiRenderOption.InlineSimple)]
-        [JsonInclude]
-        public WebUser? WebUser { get; internal set; }
+        [UI(renderOption: UiRenderOption.SeparateTabExpanded)]
+        public AggregateReference<Customer>? Customer { get; internal set; }
 
         /// <summary>
         /// The date/time when this cart was created
@@ -91,7 +90,7 @@ namespace Acme.OnlineShopping.Web
         /// <param name="product">The product chosen by the web user</param>
         /// <param name="quantity">The quantity of this item</param>
         /// <returns></returns>
-        public ShoppingCartItem AddItemToCart
+        public void AddItemToCart
         (
             [Required]
             [FilterQuerySpecification(typeof(ProductQuerySpecification))]
@@ -109,7 +108,6 @@ namespace Acme.OnlineShopping.Web
                 Price = product.Price
             };
             AddToItems(newItem);
-            return newItem;
         }
 
         /// <summary>
@@ -118,9 +116,9 @@ namespace Acme.OnlineShopping.Web
         /// <param name="orderBuilder"></param>
         /// <param name="placementDate">Used to override the date of the order</param>
         /// <returns></returns>
-        public Order ConfirmAndPlaceOrder(OrderBuilder orderBuilder, DateTime? placementDate)
+        public async Task<Order> ConfirmAndPlaceOrderAsync(OrderBuilder orderBuilder, DateTime? placementDate)
         {
-            var newOrder = orderBuilder.CreateOrder(this, placementDate);
+            var newOrder = await orderBuilder.CreateOrderAsync(this, placementDate);
 
             ClearAllItems();
 
@@ -142,7 +140,7 @@ namespace Acme.OnlineShopping.Web
         /// <returns></returns>
         public override string ToString()
         {
-            return WebUser?.ToString() ?? string.Empty;
+            return Customer?.ToString() ?? string.Empty;
         }
     }
 }

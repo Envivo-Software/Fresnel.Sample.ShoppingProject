@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright (c) 2022-2025 Envivo Software
+﻿// SPDX-FileCopyrightText: Copyright (c) 2022-2025 Envivo Software
 // SPDX-License-Identifier: Apache-2.0
 using Acme.OnlineShopping.Stock;
 using Acme.OnlineShopping.Stock.Dependencies;
@@ -26,7 +26,6 @@ namespace Acme.OnlineShopping.Web
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
         [UI(renderOption: UiRenderOption.InlineSimple)]
-        [JsonInclude]
         public AggregateReference<ShoppingCart>? ShoppingCart { get; internal set; }
 
         /// <summary>
@@ -35,7 +34,6 @@ namespace Acme.OnlineShopping.Web
         [Relationship(type: RelationshipType.Has)]
         [UI(renderOption: UiRenderOption.InlineSimple)]
         [FilterQuerySpecification(typeof(ProductQuerySpecification))]
-        [JsonInclude]
         public Product? Product { get; internal set; }
 
         /// <summary>

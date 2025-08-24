@@ -25,8 +25,7 @@ namespace Acme.OnlineShopping.Web
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
         [UI(renderOption: UiRenderOption.SeparateTabExpanded)]
-        [JsonInclude]
-        public Customer? Customer { get; internal set; }
+        public AggregateReference<Customer>? Customer { get; set; }
 
         /// <summary>
         /// The user's login ID
@@ -48,7 +47,7 @@ namespace Acme.OnlineShopping.Web
         /// The user's shopping cart
         /// </summary>
         [Relationship(RelationshipType.Owns)]
-        [UI(renderOption: UiRenderOption.InlineSimple)]
+        [UI(renderOption: UiRenderOption.InlineExpanded)]
         public ShoppingCart? ShoppingCart { get; set; }
 
         /// <summary>

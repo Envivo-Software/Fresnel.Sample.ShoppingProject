@@ -33,7 +33,6 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// <summary>
         /// The reference number for this Account
         /// </summary>
-        [JsonInclude]
         public int AccountNo { get; internal set; }
 
         /// <summary>
@@ -45,9 +44,9 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// Any Orders associated with this Account. Orders are placed via the Shopping Cart associated with the Customer.
         /// </summary>
         [Relationship(RelationshipType.Owns)]
-        [Collection(addMethodName: nameof(AddToOrders))]
+        [UI(UiRenderOption.InlineExpanded)]
+        [Collection(addMethodName: nameof(AddToOrders), canExpandRows: true)]
         [AllowedOperations(canAdd: false, canCreate: false, canRemove: false)]
-        [JsonInclude]
         public ICollection<Order> Orders { get; internal set; }
 
         /// <summary>
@@ -65,6 +64,7 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// The Payments associated with this Account
         /// </summary>
         [Relationship(RelationshipType.Has)]
+        [UI(UiRenderOption.InlineExpanded)]
         [Collection(canExpandRows: true)]
         public ICollection<Payment> Payments { get; set; }
 
@@ -72,15 +72,15 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// The Customer's billing address (if different from their address)
         /// </summary>
         [Relationship(RelationshipType.Owns)]
+        [UI(UiRenderOption.InlineExpanded)]
         public AddressInfo BillingAddress { get; set; }
 
         /// <summary>
         /// The customer this account belongs to
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
-        [UI(renderOption: UiRenderOption.InlineSimple)]
-        [JsonInclude]
-        public EntityReference<Customer> Customer { get; internal set; }
+        [UI(renderOption: UiRenderOption.SeparateTabExpanded)]
+        public AggregateReference<Customer> Customer { get; internal set; }
 
         /// <summary>
         /// Optional: The date when the Account was closed

@@ -48,13 +48,11 @@ namespace Acme.OnlineShopping.Shopping
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
         [UI(renderOption: UiRenderOption.InlineSimple)]
-        [JsonInclude]
         public AggregateReference<Account> Account { get; internal set; }
 
         /// <summary>
         /// The reference number for this order
         /// </summary>
-        [JsonInclude]
         public int OrderNo { get; internal set; }
 
         /// <summary>
@@ -65,13 +63,11 @@ namespace Acme.OnlineShopping.Shopping
         /// <summary>
         /// The date the order was placed
         /// </summary>
-        [JsonInclude]
         public DateTime PlacementDate { get; internal set; }
 
         /// <summary>
         /// The data the order was shipped
         /// </summary>
-        [JsonInclude]
         public DateTime? ShippedDate { get; internal set; }
 
         /// <summary>
@@ -103,7 +99,6 @@ namespace Acme.OnlineShopping.Shopping
         [Relationship(RelationshipType.Owns)]
         [UI(renderOption: UiRenderOption.InlineExpanded)]
         [Collection(canExpandRows: true)]
-        [JsonInclude]
         public ICollection<OrderItem> OrderItems { get; internal set; }
 
         /// <summary>

@@ -18,7 +18,7 @@ namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
         /// <returns></returns>
         public Customer Create()
         {
-            return CreateWithName(null, null);
+            return CreateCustomerAggregate(null, null);
         }
 
         /// <summary>
@@ -28,6 +28,11 @@ namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
         /// <param name="lastName"></param>
         /// <returns></returns>
         public Customer CreateWithName(string firstName, string lastName)
+        {
+            return CreateCustomerAggregate(firstName, lastName);
+        }
+
+        private static Customer CreateCustomerAggregate(string firstName, string lastName)
         {
             var customer = new Customer
             {
@@ -55,17 +60,17 @@ namespace Acme.OnlineShopping.CustomerAccounts.Dependencies
                 },
             };
 
-            customer.WebUser.Customer = customer;
+            var customerRef = AggregateReference<Customer>.From(customer);
 
             var shoppingCart = new ShoppingCart
             {
                 Id = Guid.NewGuid(),
-                WebUser = customer.WebUser
+                Customer = customerRef
             };
             customer.WebUser.ShoppingCart = shoppingCart;
+            customer.WebUser.Customer = customerRef;
 
-            customer.Account.Customer = EntityReference<Customer>.From(customer);
-
+            customer.Account.Customer = customerRef;
             return customer;
         }
     }

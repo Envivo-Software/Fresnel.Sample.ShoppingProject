@@ -41,7 +41,6 @@ namespace Acme.OnlineShopping.CustomerAccounts
         /// </summary>
         [Relationship(RelationshipType.OwnedBy)]
         [UI(renderOption: UiRenderOption.InlineSimple)]
-        [JsonInclude]
         public EntityReference<Order> Order { get; internal set; }
 
         /// <summary>
